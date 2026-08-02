@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "title": "Nuestra canción",
+    "src": "/assets/audio/song.mp3",
+    "artist": "Artista",
+    "duration": 180
+  }
+]
