@@ -4,33 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="title" content="Nuestro Universo">
-  <meta name="description" content="Una experiencia romántica de alta calidad">
+  <meta name="description" content="Una experiencia romántica premium">
   <title>Nuestro Universo</title>
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
+  <div id="intro-screen" class="intro-screen">
+    <svg class="heart" id="heart-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <path class="heart-path" d="M50 45 L35 30 C20 15, 5 25, 5 45 C5 65, 20 80, 35 65 L50 75 L65 80 C80 90, 95 75, 95 55 C95 35, 80 15, 65 30 L50 45 Z" fill="none" stroke="#ff0044" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <p class="intro-title" id="intro-title">Cada latido me recuerda a vos.</p>
+    <button class="enter-btn" id="enter-btn">Entrar ❤️</button>
+  </div>
+
   <canvas id="particle-canvas"></canvas>
   
   <header class="header">
     <div class="logo">Nuestro Universo</div>
     <nav class="nav" id="nav">
-      <a href="#welcome">Inicio</a>
       <a href="#universe">Universo</a>
       <a href="#history">Historia</a>
-      <a href="#country">Países</a>
       <a href="#gallery">Galería</a>
       <a href="#letters">Cartas</a>
       <a href="#reasons">Razones</a>
       <a href="#promises">Promesas</a>
       <a href="#garden">Jardín</a>
-      <a href="#constellations">Constelaciones</a>
-      <a href="#memories">Recuerdos</a>
       <a href="#message">Mensaje</a>
       <a href="#countdown">Cuenta</a>
       <a href="#final">Final</a>
@@ -38,7 +49,7 @@
     <button class="menu-toggle" id="menu-toggle">☰</button>
   </header>
 
-  <main>
+  <main id="main-content" style="display: none;">
     <section id="welcome" class="section">
       <canvas id="hero-canvas"></canvas>
       <div class="hero-content fade-in">
@@ -67,22 +78,8 @@
           <div class="timeline-marker"></div>
           <div class="timeline-content">
             <h3>Primer Encuentro</h3>
-            <p>El día que todo cambió</p>
+            <p>El día que todo cambió para siempre</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="country" class="section">
-      <h2 class="section-title">Argentina &hearts; República Dominicana</h2>
-      <div class="country-grid">
-        <div class="country-card">
-          <div class="flag argentina"></div>
-          <h3>Argentina</h3>
-        </div>
-        <div class="country-card">
-          <div class="flag dominican"></div>
-          <h3>República Dominicana</h3>
         </div>
       </div>
     </section>
@@ -96,7 +93,7 @@
         </div>
       </div>
       <div class="lightbox" id="lightbox">
-        <span class="close">&times;</span>
+        <span class="lightbox-close">&times;</span>
         <img class="lightbox-img" id="lightbox-img">
         <div class="lightbox-caption"></div>
       </div>
@@ -105,21 +102,14 @@
     <section id="letters" class="section">
       <h2 class="section-title">Cartas</h2>
       <div class="letters-container" id="letters">
-        <div class="envelopes-loading">Cargando cartas...</div>
+        <div class="loading">Cargando cartas...</div>
       </div>
     </section>
 
     <section id="reasons" class="section">
       <h2 class="section-title">Razones por las que te amo</h2>
       <div class="reasons-grid" id="reasons">
-        <div class="loading">Cargando...</div>
-      </div>
-    </section>
-
-    <section id="promises" class="section">
-      <h2 class="section-title">Promesas</h2>
-      <div class="promises-container" id="promises">
-        <div class="loading">Cargando promesas...</div>
+        <div class="loading">Cargando razones...</div>
       </div>
     </section>
 
@@ -127,26 +117,6 @@
       <h2 class="section-title">Jardín de Recuerdos</h2>
       <div class="garden" id="garden">
         <div class="loading">Cargando flores...</div>
-      </div>
-    </section>
-
-    <section id="constellations" class="section">
-      <h2 class="section-title">Constelaciones</h2>
-      <div class="constellations">
-        <canvas id="constellation-canvas"></canvas>
-        <div class="star-info" id="star-info"></div>
-      </div>
-    </section>
-
-    <section id="memories" class="section">
-      <h2 class="section-title">Caja de Recuerdos</h2>
-      <div class="memories-grid" id="memories">
-        <div class="memory-item" data-memory="0">
-          <div class="memory-card">
-            <div class="memory-icon">⭐</div>
-            <p class="memory-content">Cargando...</p>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -189,17 +159,17 @@
   <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
 
   <script src="js/utils.js"></script>
-  <script src="js/canvas.js"></script>
   <script src="js/loader.js"></script>
-  <script src="js/gallery.js"></script>
-  <script src="js/timeline.js"></script>
-  <script src="js/letters.js"></script>
-  <script src="js/reasons.js"></script>
-  <script src="js/garden.js"></script>
-  <script src="js/music.js"></script>
-  <script src="js/messages.js"></script>
-  <script src="js/particles.js"></script>
+  <script src="js/particulas.js"></script>
+  <script src="js/galeria.js"></script>
+  <script src="js/lineatiempo.js"></script>
+  <script src="js/cartas.js"></script>
+  <script src="js/razones.js"></script>
+  <script src="js/jardin.js"></script>
+  <script src="js/musica.js"></script>
+  <script src="js/mensajes.js"></script>
   <script src="js/secrets.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/entrada.js"></script>
 </body>
 </html>
