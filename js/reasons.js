@@ -1,47 +1,17 @@
-class Reasons {
-  constructor() {
-    this.reasonsElement = document.getElementById('reasons')
-    this.reasonsData = []
-    
-    this.init()
-  }
+// reasons.js
+(async () => {
+  const grid = document.getElementById('reasons-grid');
+  if (!grid) return;
 
-  async init() {
-    const data = await DataLoader.loadJSON('data/reasons.json')
-    if (data && data.length > 0) {
-      this.reasonsData = data
-      this.render()
-    } else {
-      this.reasonsElement.innerHTML = '<div class="loading">Cargando razones...</div>'
-    }
-  }
-
-  render() {
-    if (!this.reasonsElement) return
-    
-    this.reasonsElement.innerHTML = this.reasonsData.map(reason => `
-      <div class="flip-card" onclick="reasons.toggleCard(this)">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="card-icon">❤️</div>
-            <h3>Razón ${reason.id}</h3>
-          </div>
-          <div class="flip-card-back">
-            <p class="reason-text">${reason.text}</p>
-            <span class="reason-author">— ${reason.author}</span>
-          </div>
-        </div>
+  try {
+    const reasons = await loadJSON('reasons.json');
+    grid.innerHTML = reasons.map((r, i) => `
+      <div class="reason-card" style="transition-delay:${i * 0.07}s">
+        <p class="reason-number">${String(i + 1).padStart(2, '0')}</p>
+        <p class="reason-text">${r.text}</p>
       </div>
-    `).join('')
+    `).join('');
+  } catch (e) {
+    grid.innerHTML = '<p style="color:var(--white-30);font-size:.85rem">No se pudieron cargar las razones.</p>';
   }
-
-  toggleCard(cardElement) {
-    const flipCardInner = cardElement.querySelector('.flip-card-inner')
-    if (flipCardInner) {
-      flipCardInner.classList.toggle('flipped')
-    }
-  }
-}
-
-const reasons = new Reasons()
-window.reasons = reasons
+})();

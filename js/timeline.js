@@ -1,38 +1,28 @@
-class Timeline {
-  constructor() {
-    this.timelineElement = document.getElementById('timeline')
-    this.timelineData = []
-    
-    this.init()
-  }
+// timeline.js
+(async () => {
+  const container = document.getElementById('timeline-container');
+  if (!container) return;
 
-  async init() {
-    const data = await DataLoader.loadJSON('data/timeline.json')
-    if (data && data.length > 0) {
-      this.timelineData = data
-      this.render()
-    } else {
-      this.timelineElement.innerHTML = '<div class="loading">Cargando línea de tiempo...</div>'
-    }
-  }
-
-  render() {
-    if (!this.timelineElement) return
-    
-    const timelineItems = this.timelineData.map(item => `
-      <div class="timeline-item" data-date="${item.date}">
-        <div class="timeline-marker"></div>
+  try {
+    const events = await loadJSON('timeline.json');
+    container.innerHTML = events.map(ev => `
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
         <div class="timeline-content">
-          <h3>${item.title}</h3>
-          <p>${item.description}</p>
-          <span class="timeline-date">${item.date}</span>
+          <p class="timeline-date">${formatDate(ev.date)}</p>
+          <h3 class="timeline-title">${ev.title}</h3>
+          <p class="timeline-desc">${ev.description}</p>
         </div>
       </div>
-    `).join('')
-    
-    this.timelineElement.innerHTML = `<div class="timeline-line"></div>${timelineItems}`
+    `).join('');
+  } catch (e) {
+    container.innerHTML = '<p style="color:var(--white-30);font-size:.85rem">No se pudo cargar la historia.</p>';
   }
-}
 
-const timeline = new Timeline()
-window.timeline = timeline
+  function formatDate(str) {
+    if (!str) return '';
+    const [y, m, d] = str.split('-');
+    const months = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    return `${d ? d + ' ' : ''}${months[parseInt(m,10)-1]} ${y}`;
+  }
+})();

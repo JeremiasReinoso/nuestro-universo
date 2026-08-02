@@ -1,37 +1,23 @@
-class DailyMessage {
-  constructor() {
-    this.messageElement = document.getElementById('daily-message')
-    this.messagesData = []
-    
-    this.init()
-  }
+// messages.js
+(async () => {
+  const textEl = document.getElementById('daily-text');
+  const dateEl = document.getElementById('daily-date');
+  if (!textEl) return;
 
-  async init() {
-    const data = await DataLoader.loadJSON('data/dailyMessages.json')
-    if (data && data.length > 0) {
-      this.messagesData = data
-      this.render()
-    } else {
-      this.messageElement.innerHTML = '<div class="loading">Cargando mensaje del día...</div>'
-    }
-  }
+  try {
+    const messages = await loadJSON('dailyMessages.json');
+    const today = new Date();
+    const todayStr = today.toISOString().split('T')[0];
 
-  render() {
-    if (!this.messageElement || this.messagesData.length === 0) return
-    
-    const today = new Date()
-    const dayIndex = today.getDate() % this.messagesData.length
-    const message = this.messagesData[dayIndex]
-    
-    this.messageElement.innerHTML = `
-      <div class="message-card fade-in">
-        <div class="message-icon">💌</div>
-        <blockquote class="message-text">${message.message}</blockquote>
-        <footer class="message-date">${message.date}</footer>
-      </div>
-    `
-  }
-}
+    // Busca mensaje del día exacto, si no rota por índice
+    const match = messages.find(m => m.date === todayStr);
+    const msg = match || messages[today.getDate() % messages.length];
 
-const dailyMessage = new DailyMessage()
-window.dailyMessage = dailyMessage
+    textEl.textContent = msg.message;
+    dateEl.textContent = today.toLocaleDateString('es-ES', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+  } catch (e) {
+    textEl.textContent = 'Siempre serás mi universo.';
+  }
+})();

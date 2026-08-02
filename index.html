@@ -1,175 +1,215 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="title" content="Nuestro Universo">
-  <meta name="description" content="Una experiencia romántica premium">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nuestro Universo</title>
-  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
-  <div id="intro-screen" class="intro-screen">
-    <svg class="heart" id="heart-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-          <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-      <path class="heart-path" d="M50 45 L35 30 C20 15, 5 25, 5 45 C5 65, 20 80, 35 65 L50 75 L65 80 C80 90, 95 75, 95 55 C95 35, 80 15, 65 30 L50 45 Z" fill="none" stroke="#ff0044" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    <p class="intro-title" id="intro-title">Cada latido me recuerda a vos.</p>
-    <button class="enter-btn" id="enter-btn">Entrar ❤️</button>
+
+  <!-- ═══════════════════════════════════════════
+       PANTALLA DE ENTRADA
+  ═══════════════════════════════════════════ -->
+  <div id="entry-screen">
+    <div id="entry-content">
+      <div id="heart-container">
+        <svg id="heart-svg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path id="heart-path" d="M50 85 C50 85 5 55 5 28 C5 14 16 5 28 5 C36 5 44 9 50 16 C56 9 64 5 72 5 C84 5 95 14 95 28 C95 55 50 85 50 85 Z"/>
+        </svg>
+      </div>
+      <p id="entry-tagline">Cada latido me recuerda a vos.</p>
+      <button id="btn-enter" class="btn-primary">Entrar</button>
+    </div>
   </div>
 
-  <canvas id="particle-canvas"></canvas>
-  
-  <header class="header">
-    <div class="logo">Nuestro Universo</div>
-    <nav class="nav" id="nav">
-      <a href="#universe">Universo</a>
-      <a href="#history">Historia</a>
-      <a href="#gallery">Galería</a>
-      <a href="#letters">Cartas</a>
-      <a href="#reasons">Razones</a>
-      <a href="#promises">Promesas</a>
-      <a href="#garden">Jardín</a>
-      <a href="#message">Mensaje</a>
-      <a href="#countdown">Cuenta</a>
-      <a href="#final">Final</a>
+  <!-- ═══════════════════════════════════════════
+       PÁGINA PRINCIPAL
+  ═══════════════════════════════════════════ -->
+  <main id="main" class="hidden">
+
+    <!-- NAV LATERAL -->
+    <nav id="side-nav" aria-label="Navegación de secciones">
+      <ul>
+        <li><a href="#bienvenida"   data-label="Bienvenida"   class="nav-dot active"></a></li>
+        <li><a href="#historia"     data-label="Historia"     class="nav-dot"></a></li>
+        <li><a href="#distancia"    data-label="Distancia"    class="nav-dot"></a></li>
+        <li><a href="#galeria"      data-label="Galería"      class="nav-dot"></a></li>
+        <li><a href="#cartas"       data-label="Cartas"       class="nav-dot"></a></li>
+        <li><a href="#razones"      data-label="Razones"      class="nav-dot"></a></li>
+        <li><a href="#promesas"     data-label="Promesas"     class="nav-dot"></a></li>
+        <li><a href="#jardin"       data-label="Jardín"       class="nav-dot"></a></li>
+        <li><a href="#mensaje"      data-label="Mensaje"      class="nav-dot"></a></li>
+        <li><a href="#carta-final"  data-label="Carta final"  class="nav-dot"></a></li>
+      </ul>
     </nav>
-    <button class="menu-toggle" id="menu-toggle">☰</button>
-  </header>
 
-  <main id="main-content" style="display: none;">
-    <section id="welcome" class="section">
-      <canvas id="hero-canvas"></canvas>
-      <div class="hero-content fade-in">
-        <h1 class="hero-title">Nuestro Universo</h1>
-        <p class="hero-subtitle">Un viaje por el corazón de nuestro amor</p>
-        <a href="#universe" class="cta-button">Comenzar</a>
-      </div>
-    </section>
-
-    <section id="universe" class="section">
-      <h2 class="section-title">Nuestro Universo</h2>
-      <div class="content-grid">
-        <div class="text-content">
-          <p>En un universo de posibilidades infinitas, cada estrella cuenta una historia. La nuestra comienza cuando dos corazones se encontraron...</p>
-        </div>
-        <div class="visual-content">
-          <div class="universe-animation"></div>
+    <!-- 1. BIENVENIDA -->
+    <section id="bienvenida" class="section">
+      <div class="section-inner center">
+        <span class="section-label">01</span>
+        <h1 class="display-title">Nuestro<br>Universo</h1>
+        <p class="display-sub">Un espacio construido para vos.</p>
+        <div class="scroll-hint" aria-hidden="true">
+          <span></span>
         </div>
       </div>
     </section>
 
-    <section id="history" class="section">
-      <h2 class="section-title">Nuestra Historia</h2>
-      <div class="timeline" id="timeline">
-        <div class="timeline-item" data-date="2024-01-01">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>Primer Encuentro</h3>
-            <p>El día que todo cambió para siempre</p>
+    <!-- 2. NUESTRA HISTORIA -->
+    <section id="historia" class="section">
+      <div class="section-inner">
+        <span class="section-label">02</span>
+        <h2 class="section-title">Nuestra historia</h2>
+        <p class="section-sub">Los momentos que nos construyeron.</p>
+        <div id="timeline-container" class="timeline"></div>
+      </div>
+    </section>
+
+    <!-- 3. DISTANCIA -->
+    <section id="distancia" class="section">
+      <div class="section-inner center">
+        <span class="section-label">03</span>
+        <h2 class="section-title">La distancia</h2>
+        <p class="section-sub">Entre Argentina y República Dominicana.</p>
+        <div class="distance-card">
+          <div class="distance-point">
+            <span class="distance-flag">🇦🇷</span>
+            <span class="distance-city">Argentina</span>
+          </div>
+          <div class="distance-line">
+            <span class="distance-km">~7 200 km</span>
+            <div class="distance-track">
+              <div class="distance-pulse"></div>
+            </div>
+          </div>
+          <div class="distance-point">
+            <span class="distance-flag">🇩🇴</span>
+            <span class="distance-city">República Dominicana</span>
           </div>
         </div>
+        <p class="distance-note">Ningún kilómetro borra lo que sentimos.</p>
       </div>
     </section>
 
-    <section id="gallery" class="section">
-      <h2 class="section-title">Galería</h2>
-      <div class="gallery-grid" id="gallery">
-        <div class="polaroid" data-index="0">
-          <img src="assets/images/placeholder.svg" alt="Momento especial">
-          <div class="polaroid-caption">Cargando...</div>
+    <!-- 4. GALERÍA -->
+    <section id="galeria" class="section">
+      <div class="section-inner">
+        <span class="section-label">04</span>
+        <h2 class="section-title">Galería</h2>
+        <p class="section-sub">Momentos que guardamos juntos.</p>
+        <div id="gallery-grid" class="gallery-grid"></div>
+      </div>
+
+      <!-- LIGHTBOX -->
+      <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true">
+        <button id="lightbox-close" class="lightbox-close" aria-label="Cerrar">&times;</button>
+        <div class="lightbox-inner">
+          <img id="lightbox-img" src="" alt="" />
+          <p id="lightbox-caption"></p>
         </div>
       </div>
-      <div class="lightbox" id="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-img" id="lightbox-img">
-        <div class="lightbox-caption"></div>
+    </section>
+
+    <!-- 5. CARTAS -->
+    <section id="cartas" class="section">
+      <div class="section-inner">
+        <span class="section-label">05</span>
+        <h2 class="section-title">Cartas</h2>
+        <p class="section-sub">Palabras que no caben en un mensaje.</p>
+        <div id="letters-list" class="letters-list"></div>
+      </div>
+
+      <!-- MODAL CARTA -->
+      <div id="letter-modal" class="modal hidden" role="dialog" aria-modal="true">
+        <div class="modal-backdrop"></div>
+        <div class="modal-box">
+          <button class="modal-close" aria-label="Cerrar">&times;</button>
+          <p class="modal-meta" id="modal-sender"></p>
+          <h3 class="modal-title" id="modal-subject"></h3>
+          <p class="modal-date" id="modal-date"></p>
+          <div class="modal-body" id="modal-content"></div>
+        </div>
       </div>
     </section>
 
-    <section id="letters" class="section">
-      <h2 class="section-title">Cartas</h2>
-      <div class="letters-container" id="letters">
-        <div class="loading">Cargando cartas...</div>
+    <!-- 6. RAZONES -->
+    <section id="razones" class="section">
+      <div class="section-inner">
+        <span class="section-label">06</span>
+        <h2 class="section-title">Razones</h2>
+        <p class="section-sub">Por qué te amo.</p>
+        <div id="reasons-grid" class="reasons-grid"></div>
       </div>
     </section>
 
-    <section id="reasons" class="section">
-      <h2 class="section-title">Razones por las que te amo</h2>
-      <div class="reasons-grid" id="reasons">
-        <div class="loading">Cargando razones...</div>
+    <!-- 7. PROMESAS -->
+    <section id="promesas" class="section">
+      <div class="section-inner">
+        <span class="section-label">07</span>
+        <h2 class="section-title">Promesas</h2>
+        <p class="section-sub">Lo que te juro cada día.</p>
+        <div id="promises-list" class="promises-list"></div>
       </div>
     </section>
 
-    <section id="garden" class="section">
-      <h2 class="section-title">Jardín de Recuerdos</h2>
-      <div class="garden" id="garden">
-        <div class="loading">Cargando flores...</div>
+    <!-- 8. JARDÍN -->
+    <section id="jardin" class="section">
+      <div class="section-inner center">
+        <span class="section-label">08</span>
+        <h2 class="section-title">Jardín</h2>
+        <p class="section-sub">Cada flor es un recuerdo plantado.</p>
+        <div id="garden-field" class="garden-field"></div>
+      </div>
+
+      <!-- TOOLTIP FLOR -->
+      <div id="flower-tooltip" class="flower-tooltip hidden"></div>
+    </section>
+
+    <!-- 9. MENSAJE DEL DÍA -->
+    <section id="mensaje" class="section">
+      <div class="section-inner center">
+        <span class="section-label">09</span>
+        <h2 class="section-title">Mensaje del día</h2>
+        <div class="daily-card">
+          <p id="daily-text" class="daily-text">Cargando…</p>
+          <span id="daily-date" class="daily-date"></span>
+        </div>
       </div>
     </section>
 
-    <section id="message" class="section">
-      <h2 class="section-title">Mensaje del Día</h2>
-      <div class="daily-message" id="daily-message">
-        <div class="loading">Cargando mensaje...</div>
+    <!-- 10. CARTA FINAL -->
+    <section id="carta-final" class="section">
+      <div class="section-inner center">
+        <span class="section-label">10</span>
+        <div class="final-letter">
+          <svg class="final-heart" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M50 85 C50 85 5 55 5 28 C5 14 16 5 28 5 C36 5 44 9 50 16 C56 9 64 5 72 5 C84 5 95 14 95 28 C95 55 50 85 50 85 Z"/>
+          </svg>
+          <h2 class="final-title">Para siempre.</h2>
+          <p class="final-text">
+            No importa la distancia.<br>
+            No importa el tiempo.<br>
+            Siempre voy a encontrar el camino de vuelta a vos.
+          </p>
+          <p class="final-signature">Con todo mi amor.</p>
+        </div>
       </div>
     </section>
 
-    <section id="countdown" class="section">
-      <h2 class="section-title">Cuenta Regresiva</h2>
-      <div class="countdown" id="countdown">
-        <div class="countdown-item"><span id="days">00</span><small>Días</small></div>
-        <div class="countdown-item"><span id="hours">00</span><small>Horas</small></div>
-        <div class="countdown-item"><span id="minutes">00</span><small>Min</small></div>
-        <div class="countdown-item"><span id="seconds">00</span><small>Seg</small></div>
-      </div>
-    </section>
-
-    <section id="final" class="section">
-      <div class="final-message">
-        <h2>Gracias por visitar nuestro universo</h2>
-        <p>Esperamos que hayas disfrutado este viaje especial</p>
-      </div>
-    </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <p>&hearts; Nuestro Universo</p>
-      <audio id="background-music" loop>
-        <source src="assets/audio/silent.mp3" type="audio/mpeg">
-      </audio>
-      <button id="music-toggle" class="music-btn">🔊</button>
-    </div>
-  </footer>
-
-  <button class="scroll-top" id="scroll-top">↑</button>
-  <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-
-  <script src="js/utils.js"></script>
   <script src="js/loader.js"></script>
-  <script src="js/particulas.js"></script>
-  <script src="js/galeria.js"></script>
-  <script src="js/lineatiempo.js"></script>
-  <script src="js/cartas.js"></script>
-  <script src="js/razones.js"></script>
-  <script src="js/jardin.js"></script>
-  <script src="js/musica.js"></script>
-  <script src="js/mensajes.js"></script>
-  <script src="js/secrets.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/letters.js"></script>
+  <script src="js/reasons.js"></script>
+  <script src="js/promises.js"></script>
+  <script src="js/garden.js"></script>
+  <script src="js/messages.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/entrada.js"></script>
 </body>
 </html>

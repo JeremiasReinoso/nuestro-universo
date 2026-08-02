@@ -1,51 +1,54 @@
-class Garden {
-  constructor() {
-    this.gardenElement = document.getElementById('garden')
-    this.flowersData = []
-    
-    this.init()
+// garden.js
+(async () => {
+  const field = document.getElementById('garden-field');
+  const tooltip = document.getElementById('flower-tooltip');
+  if (!field) return;
+
+  try {
+    const flowers = await loadJSON('flowers.json');
+    flowers.forEach(f => {
+      const el = document.createElement('div');
+      el.className = 'flower';
+      el.style.left = `${f.position.x}%`;
+      el.style.top  = `${f.position.y}%`;
+      el.style.color = f.color;
+      el.innerHTML = flowerSVG(f.color);
+      el.setAttribute('aria-label', f.name);
+
+      el.addEventListener('mouseenter', e => showTooltip(e, f));
+      el.addEventListener('mousemove',  e => moveTooltip(e));
+      el.addEventListener('mouseleave', hideTooltip);
+
+      field.appendChild(el);
+    });
+  } catch (e) {
+    field.innerHTML = '<p style="color:var(--white-30);font-size:.85rem;padding:24px">No se pudo cargar el jardín.</p>';
   }
 
-  async init() {
-    const data = await DataLoader.loadJSON('data/flowers.json')
-    if (data && data.length > 0) {
-      this.flowersData = data
-      this.render()
-    } else {
-      this.gardenElement.innerHTML = '<div class="loading">Cargando flores...</div>'
-    }
+  function showTooltip(e, f) {
+    tooltip.innerHTML = `<strong>${f.name}</strong>${f.message}`;
+    tooltip.classList.remove('hidden');
+    moveTooltip(e);
   }
-
-  render() {
-    if (!this.gardenElement) return
-    
-    this.flowersElement.innerHTML = this.flowersData.map(flower => `
-      <div class="flower" style="
-        background: ${flower.color};
-        left: ${flower.position.x}%;
-        top: ${flower.position.y}%;
-      " onclick="garden.showMessage('${flower.message}')">
-        <div class="flower-message">${flower.message}</div>
-      </div>
-    `).join('')
+  function moveTooltip(e) {
+    tooltip.style.left = `${e.clientX + 14}px`;
+    tooltip.style.top  = `${e.clientY - 10}px`;
   }
+  function hideTooltip() { tooltip.classList.add('hidden'); }
 
-  showMessage(message) {
-    const toast = document.createElement('div')
-    toast.className = 'flower-toast'
-    toast.innerHTML = `
-      <p>${message}</p>
-      <button onclick="this.parentElement.remove()">✕</button>
-    `
-    document.body.appendChild(toast)
-    
-    setTimeout(() => {
-      if (toast.parentElement) {
-        toast.remove()
-      }
-    }, 5000)
+  function flowerSVG(color) {
+    return `<svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <g fill="${color}" opacity="0.9">
+        <ellipse cx="18" cy="10" rx="4" ry="7"/>
+        <ellipse cx="18" cy="26" rx="4" ry="7"/>
+        <ellipse cx="10" cy="18" rx="7" ry="4"/>
+        <ellipse cx="26" cy="18" rx="7" ry="4"/>
+        <ellipse cx="12" cy="12" rx="3.5" ry="6" transform="rotate(-45 12 12)"/>
+        <ellipse cx="24" cy="12" rx="3.5" ry="6" transform="rotate(45 24 12)"/>
+        <ellipse cx="12" cy="24" rx="3.5" ry="6" transform="rotate(45 12 24)"/>
+        <ellipse cx="24" cy="24" rx="3.5" ry="6" transform="rotate(-45 24 24)"/>
+      </g>
+      <circle cx="18" cy="18" r="5" fill="#fff" opacity="0.95"/>
+    </svg>`;
   }
-}
-
-const garden = new Garden()
-window.garden = garden
+})();

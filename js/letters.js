@@ -1,58 +1,46 @@
-class Letters {
-  constructor() {
-    this.lettersElement = document.getElementById('letters')
-    this.lettersData = []
-    this.revealedCount = 0
-    
-    this.init()
-  }
+// letters.js
+(async () => {
+  const list = document.getElementById('letters-list');
+  const modal = document.getElementById('letter-modal');
+  const backdrop = modal?.querySelector('.modal-backdrop');
+  const closeBtn = modal?.querySelector('.modal-close');
+  if (!list) return;
 
-  async init() {
-    const savedCount = Utils.getStorage('revealedLetters')
-    if (savedCount) this.revealedCount = savedCount
-
-    const data = await DataLoader.loadJSON('data/letters.json')
-    if (data && data.length > 0) {
-      this.lettersData = data
-      this.render()
-    } else {
-      this.lettersElement.innerHTML = '<div class="loading">Cargando cartas...</div>'
-    }
-  }
-
-  render() {
-    if (!this.lettersElement) return
-    
-    const revealButton = `
-      <button class="reveal-btn" id="reveal-all-btn">Revelar todas mis cartas</button>
-    `
-    
-    const lettersList = this.lettersData.map((letter, index) => `
-      <div class="letter-envelope" style="--delay: ${index * 0.1}s">
-        <div class="letter-content">
-          <h3 class="letter-title">${letter.subject}</h3>
-          <p class="letter-date">${letter.date}</p>
-          <div class="letter-body ${this.revealedCount > index ? 'revealed' : ''}">
-            <p class="letter-sender">De: ${letter.sender}</p>
-            <p class="letter-text">${letter.content.replace(/\n/g, '<br>')}</p>
-          </div>
+  try {
+    const letters = await loadJSON('letters.json');
+    list.innerHTML = letters.map(l => `
+      <div class="letter-item" data-id="${l.id}">
+        <div class="letter-meta">
+          <span class="letter-subject">${l.subject}</span>
+          <span class="letter-sender">${l.sender} · ${formatDate(l.date)}</span>
         </div>
-        <div class="letter-flap"></div>
+        <span class="letter-arrow">→</span>
       </div>
-    `).join('')
-    
-    this.lettersElement.innerHTML = `<div class="letters-container">${revealButton}${lettersList}</div>`
-    
-    document.getElementById('reveal-all-btn').addEventListener('click', () => this.revealAll())
+    `).join('');
+
+    list.querySelectorAll('.letter-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const letter = letters.find(l => l.id === parseInt(item.dataset.id));
+        if (!letter) return;
+        document.getElementById('modal-sender').textContent = letter.sender;
+        document.getElementById('modal-subject').textContent = letter.subject;
+        document.getElementById('modal-date').textContent = formatDate(letter.date);
+        document.getElementById('modal-content').textContent = letter.content;
+        modal.classList.remove('hidden');
+      });
+    });
+  } catch (e) {
+    list.innerHTML = '<p style="color:var(--white-30);font-size:.85rem">No se pudieron cargar las cartas.</p>';
   }
 
-  revealAll() {
-    if (!this.lettersData) return
-    this.revealedCount = this.lettersData.length
-    Utils.setStorage('revealedLetters', this.revealedCount)
-    this.render()
-  }
-}
+  function closeModal() { modal.classList.add('hidden'); }
+  closeBtn?.addEventListener('click', closeModal);
+  backdrop?.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-const letters = new Letters()
-window.letters = letters
+  function formatDate(str) {
+    if (!str) return '';
+    const d = new Date(str + 'T00:00:00');
+    return d.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+})();
