@@ -28,6 +28,24 @@
   .modal-box { padding: 28px 24px; }
 
   .daily-card { padding: 32px 24px; }
+
+  .book-container { max-width: 100%; }
+  .book-pages { height: 300px; }
+  .book-page { padding: 24px; }
+
+  .clocks-container { gap: 24px; }
+  .clock-card { min-width: 140px; padding: 24px 32px; }
+  .clock-time { font-size: 2rem; }
+  .clock-separator { width: 48px; height: 48px; }
+
+  .photos-grid { grid-template-columns: 1fr; }
+
+  .dreams-grid { grid-template-columns: 1fr; }
+
+  .capsula-container { grid-template-columns: 1fr; }
+
+  .permanent-heart { width: 40px; height: 36px; bottom: 24px; left: 24px; }
+  .permanent-heart path { stroke-width: 2; }
 }
 
 /* ── Móvil ── */
@@ -43,4 +61,24 @@
   .garden-field { height: 260px; }
 
   .final-letter { gap: 18px; }
+
+  .book-pages { height: 250px; }
+  .book-page { padding: 20px; }
+  .book-page-title { font-size: 1.2rem; }
+  .book-page-content { font-size: 0.9rem; }
+
+  .clocks-container { gap: 16px; }
+  .clock-card { min-width: 120px; padding: 20px 24px; }
+  .clock-time { font-size: 1.75rem; }
+  .clock-separator { width: 40px; height: 40px; }
+  .clock-separator svg { width: 24px; height: 24px; }
+
+  .photos-grid { grid-template-columns: 1fr; }
+
+  .dreams-grid { grid-template-columns: 1fr; }
+
+  .capsula-container { grid-template-columns: 1fr; }
+
+  .permanent-heart { width: 36px; height: 32px; bottom: 20px; left: 20px; }
+  .permanent-heart path { stroke-width: 2; }
 }
