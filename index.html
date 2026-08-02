@@ -54,6 +54,7 @@
         <span class="section-label">01</span>
         <h1 class="display-title">Nuestro<br>Universo</h1>
         <p class="display-sub">Un espacio construido para vos.</p>
+        <p class="greeting-message" style="font-size:1rem;color:var(--white-60);margin-top:16px"></p>
         <div class="scroll-hint" aria-hidden="true"><span></span></div>
       </div>
     </section>
@@ -271,6 +272,13 @@
       </div>
     </section>
 
+    <!-- 9.5. CORAZÓN PERMANENTE -->
+    <div id="permanent-heart" class="permanent-heart hidden">
+      <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M50 85 C50 85 5 55 5 28 C5 14 16 5 28 5 C36 5 44 9 50 16 C56 9 64 5 72 5 C84 5 95 14 95 28 C95 55 50 85 50 85 Z"/>
+      </svg>
+    </div>
+
     <!-- 10. CAPÍTULOS QUE NOS FALTAN -->
     <section id="capitulos" class="section">
       <div class="section-inner">
@@ -281,7 +289,77 @@
       </div>
     </section>
 
-    <!-- 11. CARTA FINAL -->
+    <!-- 11. LIBRO DE RECUERDOS -->
+    <section id="libro-recuerdos" class="section">
+      <div class="section-inner">
+        <span class="section-label">11</span>
+        <h2 class="section-title">Libro de recuerdos</h2>
+        <p class="section-sub">Páginas que guardan momentos únicos.</p>
+        <div id="book-container" class="book-container">
+          <div id="book-pages" class="book-pages"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. RELOJES -->
+    <section id="relojes" class="section">
+      <div class="section-inner center">
+        <span class="section-label">12</span>
+        <h2 class="section-title">Nuestros relojes</h2>
+        <p class="section-sub">Mismos segundos, diferentes horarios.</p>
+        <div class="clocks-container">
+          <div class="clock-card">
+            <span class="clock-flag">🇦🇷</span>
+            <p class="clock-city">Argentina</p>
+            <p class="clock-time" id="clock-ar">--:--</p>
+          </div>
+          <div class="clock-separator">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <div class="clock-card">
+            <span class="clock-flag">🇩🇴</span>
+            <p class="clock-city">República Dominicana</p>
+            <p class="clock-time" id="clock-do">--:--</p>
+          </div>
+        </div>
+        <p class="distance-quote" id="clock-quote">"Aunque estemos lejos, compartimos el mismo momento."</p>
+      </div>
+    </section>
+
+    <!-- 13. FOTOGRAFÍAS -->
+    <section id="fotografias" class="section">
+      <div class="section-inner">
+        <span class="section-label">13</span>
+        <h2 class="section-title">Fotografías</h2>
+        <p class="section-sub">Instantes que merecen ser recordados.</p>
+        <div id="photos-grid" class="gallery-grid"></div>
+      </div>
+    </section>
+
+    <!-- 14. PRÓXIMOS SUEÑOS -->
+    <section id="suenos" class="section">
+      <div class="section-inner">
+        <span class="section-label">14</span>
+        <h2 class="section-title">Próximos sueños</h2>
+        <p class="section-sub">Cosas que queremos vivir juntos.</p>
+        <div id="dreams-grid" class="future-grid"></div>
+      </div>
+    </section>
+
+    <!-- 15. CÁPSULA DEL TIEMPO -->
+    <section id="capsula" class="section">
+      <div class="section-inner">
+        <span class="section-label">15</span>
+        <h2 class="section-title">Para abrir en el futuro</h2>
+        <p class="section-sub">Cartas selladas para momentos especiales.</p>
+        <div id="capsula-container" class="capsula-container"></div>
+      </div>
+    </section>
+
+    <!-- 16. CARTA FINAL -->
     <section id="carta-final" class="section">
       <div class="section-inner center">
         <span class="section-label">11</span>
@@ -305,7 +383,13 @@
   <script src="js/promises.js"></script>
   <script src="js/music.js"></script>
   <script src="js/messages.js"></script>
+  <script src="js/miss.js"></script>
   <script src="js/future.js"></script>
+  <script src="js/clocks.js"></script>
+  <script src="js/book.js"></script>
+  <script src="js/photos.js"></script>
+  <script src="js/dreams.js"></script>
+  <script src="js/capsula.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

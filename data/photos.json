@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Nuestra primera vez juntos",
+    "src": "assets/images/placeholder.svg",
+    "dedication": "Donde todo comenzó a tener sentido."
+  },
+  {
+    "id": 2,
+    "title": "Nuestro primer viaje",
+    "src": "assets/images/placeholder.svg",
+    "dedication": "Descubrimos el mundo y descubrimos que éramos un equipo."
+  },
+  {
+    "id": 3,
+    "title": "Nuestro primer atardecer",
+    "src": "assets/images/placeholder.svg",
+    "dedication": "El cielo se pintó de colores, pero nada comparado con tus ojos."
+  }
+]

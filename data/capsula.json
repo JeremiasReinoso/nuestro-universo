@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Para cuando cumplamos 1 año",
+    "description": "Carta para celebrar nuestro primer aniversario juntos.",
+    "unlockDate": "2025-01-15",
+    "unlocked": false
+  },
+  {
+    "id": 2,
+    "title": "Para nuestro segundo aniversario",
+    "description": "Carta para celebrar dos años de amor y recuerdos.",
+    "unlockDate": "2026-01-15",
+    "unlocked": false
+  },
+  {
+    "id": 3,
+    "title": "Para cuando nos veamos de nuevo",
+    "description": "Carta para cuando finalmente podamos estar juntos otra vez.",
+    "unlockDate": "2024-12-25",
+    "unlocked": false
+  }
+]

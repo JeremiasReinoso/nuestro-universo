@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Nuestro primer abrazo",
+    "description": "Sentir tu corazón latiendo contra el mío por primera vez."
+  },
+  {
+    "id": 2,
+    "title": "Nuestro primer beso",
+    "description": "Ese momento mágico en el que todo el tiempo se detuvo."
+  },
+  {
+    "id": 3,
+    "title": "Nuestro primer viaje",
+    "description": "Explorar el mundo juntos, paso a paso, mano con mano."
+  },
+  {
+    "id": 4,
+    "title": "Nuestro primer atardecer",
+    "description": "Ver el cielo pintarse de colores mientras te miro a los ojos."
+  }
+]
