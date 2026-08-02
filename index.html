@@ -34,16 +34,17 @@
     <!-- NAV LATERAL -->
     <nav id="side-nav" aria-label="Navegación de secciones">
       <ul>
-        <li><a href="#bienvenida"   data-label="Bienvenida"   class="nav-dot active"></a></li>
-        <li><a href="#historia"     data-label="Historia"     class="nav-dot"></a></li>
-        <li><a href="#distancia"    data-label="Distancia"    class="nav-dot"></a></li>
-        <li><a href="#galeria"      data-label="Galería"      class="nav-dot"></a></li>
-        <li><a href="#cartas"       data-label="Cartas"       class="nav-dot"></a></li>
-        <li><a href="#razones"      data-label="Razones"      class="nav-dot"></a></li>
-        <li><a href="#promesas"     data-label="Promesas"     class="nav-dot"></a></li>
-        <li><a href="#jardin"       data-label="Jardín"       class="nav-dot"></a></li>
-        <li><a href="#mensaje"      data-label="Mensaje"      class="nav-dot"></a></li>
-        <li><a href="#carta-final"  data-label="Carta final"  class="nav-dot"></a></li>
+        <li><a href="#bienvenida"  data-label="Bienvenida"   class="nav-dot active"></a></li>
+        <li><a href="#historia"    data-label="Historia"     class="nav-dot"></a></li>
+        <li><a href="#distancia"   data-label="Distancia"    class="nav-dot"></a></li>
+        <li><a href="#galeria"     data-label="Así te veo"   class="nav-dot"></a></li>
+        <li><a href="#cartas"      data-label="Cartas"       class="nav-dot"></a></li>
+        <li><a href="#razones"     data-label="Razones"      class="nav-dot"></a></li>
+        <li><a href="#promesas"    data-label="Promesas"     class="nav-dot"></a></li>
+        <li><a href="#playlist"    data-label="Playlist"     class="nav-dot"></a></li>
+        <li><a href="#mensaje"     data-label="Mensaje"      class="nav-dot"></a></li>
+        <li><a href="#capitulos"   data-label="Capítulos"    class="nav-dot"></a></li>
+        <li><a href="#carta-final" data-label="Carta final"  class="nav-dot"></a></li>
       </ul>
     </nav>
 
@@ -53,55 +54,83 @@
         <span class="section-label">01</span>
         <h1 class="display-title">Nuestro<br>Universo</h1>
         <p class="display-sub">Un espacio construido para vos.</p>
-        <div class="scroll-hint" aria-hidden="true">
-          <span></span>
-        </div>
+        <div class="scroll-hint" aria-hidden="true"><span></span></div>
       </div>
     </section>
 
-    <!-- 2. NUESTRA HISTORIA -->
+    <!-- 2. NUESTRA HISTORIA HASTA HOY -->
     <section id="historia" class="section">
       <div class="section-inner">
         <span class="section-label">02</span>
-        <h2 class="section-title">Nuestra historia</h2>
-        <p class="section-sub">Los momentos que nos construyeron.</p>
+        <h2 class="section-title">Nuestra historia hasta hoy</h2>
+        <p class="section-sub">Todo lo que ya construimos, a pesar de la distancia.</p>
         <div id="timeline-container" class="timeline"></div>
       </div>
     </section>
 
-    <!-- 3. DISTANCIA -->
+    <!-- 3. LA DISTANCIA QUE NOS UNE -->
     <section id="distancia" class="section">
       <div class="section-inner center">
         <span class="section-label">03</span>
-        <h2 class="section-title">La distancia</h2>
-        <p class="section-sub">Entre Argentina y República Dominicana.</p>
-        <div class="distance-card">
-          <div class="distance-point">
+        <h2 class="section-title">La distancia que nos une</h2>
+        <p class="section-sub">Siete mil kilómetros que no pudieron separarnos.</p>
+        <div class="distance-visual">
+          <div class="distance-country">
             <span class="distance-flag">🇦🇷</span>
             <span class="distance-city">Argentina</span>
           </div>
-          <div class="distance-line">
-            <span class="distance-km">~7 200 km</span>
-            <div class="distance-track">
-              <div class="distance-pulse"></div>
+          <div class="distance-connector">
+            <div class="distance-line-wrap">
+              <div class="distance-beam"></div>
+              <div class="distance-heart-mid">
+                <svg viewBox="0 0 40 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M20 34 C20 34 2 22 2 11 C2 5.5 6.5 2 11 2 C14.5 2 17.5 3.8 20 6.5 C22.5 3.8 25.5 2 29 2 C33.5 2 38 5.5 38 11 C38 22 20 34 20 34 Z"/>
+                </svg>
+              </div>
             </div>
+            <span class="distance-km">~7 200 km</span>
           </div>
-          <div class="distance-point">
+          <div class="distance-country">
             <span class="distance-flag">🇩🇴</span>
             <span class="distance-city">República Dominicana</span>
           </div>
         </div>
-        <p class="distance-note">Ningún kilómetro borra lo que sentimos.</p>
+        <p class="distance-quote">
+          "La distancia no es un obstáculo.<br>
+          Es la prueba de que lo nuestro vale el esfuerzo."
+        </p>
       </div>
     </section>
 
-    <!-- 4. GALERÍA -->
+    <!-- 4. ASÍ TE VEO -->
     <section id="galeria" class="section">
       <div class="section-inner">
         <span class="section-label">04</span>
-        <h2 class="section-title">Galería</h2>
-        <p class="section-sub">Momentos que guardamos juntos.</p>
-        <div id="gallery-grid" class="gallery-grid"></div>
+        <h2 class="section-title">Así te veo</h2>
+        <p class="section-sub">Dos mundos. Un mismo amor.</p>
+        <div id="gallery-dual" class="gallery-dual">
+          <div class="gallery-col" id="gallery-col-me">
+            <p class="gallery-col-label">Yo</p>
+            <div class="gallery-col-items" id="gallery-me"></div>
+          </div>
+          <div class="gallery-divider" aria-hidden="true">
+            <div class="gallery-divider-line">
+              <div class="gallery-divider-pulse"></div>
+            </div>
+            <svg class="gallery-divider-heart" viewBox="0 0 40 36" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 34 C20 34 2 22 2 11 C2 5.5 6.5 2 11 2 C14.5 2 17.5 3.8 20 6.5 C22.5 3.8 25.5 2 29 2 C33.5 2 38 5.5 38 11 C38 22 20 34 20 34 Z"/>
+            </svg>
+          </div>
+          <div class="gallery-col" id="gallery-col-her">
+            <p class="gallery-col-label">Vos</p>
+            <div class="gallery-col-items" id="gallery-her"></div>
+          </div>
+        </div>
+        <!-- Espacio reservado para fotos juntos (futuro) -->
+        <div id="gallery-together" class="gallery-together-placeholder hidden">
+          <p class="gallery-together-label">Nosotros</p>
+          <div id="gallery-together-items" class="gallery-col-items"></div>
+        </div>
       </div>
 
       <!-- LIGHTBOX -->
@@ -123,7 +152,6 @@
         <div id="letters-list" class="letters-list"></div>
       </div>
 
-      <!-- MODAL CARTA -->
       <div id="letter-modal" class="modal hidden" role="dialog" aria-modal="true">
         <div class="modal-backdrop"></div>
         <div class="modal-box">
@@ -140,8 +168,8 @@
     <section id="razones" class="section">
       <div class="section-inner">
         <span class="section-label">06</span>
-        <h2 class="section-title">Razones</h2>
-        <p class="section-sub">Por qué te amo.</p>
+        <h2 class="section-title">Razones por las que te amo</h2>
+        <p class="section-sub">Una lista que nunca va a terminar.</p>
         <div id="reasons-grid" class="reasons-grid"></div>
       </div>
     </section>
@@ -156,46 +184,113 @@
       </div>
     </section>
 
-    <!-- 8. JARDÍN -->
-    <section id="jardin" class="section">
+    <!-- 8. NUESTRA PLAYLIST -->
+    <section id="playlist" class="section">
       <div class="section-inner center">
         <span class="section-label">08</span>
-        <h2 class="section-title">Jardín</h2>
-        <p class="section-sub">Cada flor es un recuerdo plantado.</p>
-        <div id="garden-field" class="garden-field"></div>
-      </div>
+        <h2 class="section-title">Nuestra playlist</h2>
+        <p class="section-sub">Las canciones que suenan cuando pienso en vos.</p>
 
-      <!-- TOOLTIP FLOR -->
-      <div id="flower-tooltip" class="flower-tooltip hidden"></div>
+        <div class="player-wrap">
+          <!-- Portada -->
+          <div class="player-cover" id="player-cover">
+            <div class="player-cover-placeholder" id="player-cover-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="3"/>
+                <line x1="12" y1="2" x2="12" y2="5"/>
+                <line x1="12" y1="19" x2="12" y2="22"/>
+              </svg>
+            </div>
+            <img id="player-cover-img" src="" alt="" class="hidden" />
+          </div>
+
+          <!-- Info -->
+          <div class="player-info">
+            <p class="player-title" id="player-title">—</p>
+            <p class="player-artist" id="player-artist">—</p>
+          </div>
+
+          <!-- Progreso -->
+          <div class="player-progress-wrap">
+            <span class="player-time" id="player-current">0:00</span>
+            <div class="player-progress" id="player-progress" role="slider" aria-label="Progreso">
+              <div class="player-progress-fill" id="player-fill"></div>
+              <div class="player-progress-thumb" id="player-thumb"></div>
+            </div>
+            <span class="player-time" id="player-duration">0:00</span>
+          </div>
+
+          <!-- Controles -->
+          <div class="player-controls">
+            <button class="player-btn" id="player-prev" aria-label="Anterior">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+            </button>
+            <button class="player-btn player-btn-main" id="player-play" aria-label="Reproducir">
+              <svg id="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg id="icon-pause" viewBox="0 0 24 24" fill="currentColor" class="hidden"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <button class="player-btn" id="player-next" aria-label="Siguiente">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zm2.5-6 8.5 6V6z"/></svg>
+            </button>
+          </div>
+
+          <!-- Volumen -->
+          <div class="player-volume-wrap">
+            <svg class="player-vol-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+            </svg>
+            <input type="range" id="player-volume" class="player-volume" min="0" max="1" step="0.05" value="0.7" aria-label="Volumen" />
+          </div>
+
+          <!-- Lista de canciones -->
+          <button class="player-queue-toggle" id="player-queue-toggle" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+            <span>Lista de canciones</span>
+          </button>
+          <div class="player-queue hidden" id="player-queue"></div>
+        </div>
+
+        <audio id="audio-player" preload="none"></audio>
+      </div>
     </section>
 
-    <!-- 9. MENSAJE DEL DÍA -->
+    <!-- 9. MENSAJE CUANDO ME EXTRAÑES -->
     <section id="mensaje" class="section">
       <div class="section-inner center">
         <span class="section-label">09</span>
-        <h2 class="section-title">Mensaje del día</h2>
-        <div class="daily-card">
-          <p id="daily-text" class="daily-text">Cargando…</p>
-          <span id="daily-date" class="daily-date"></span>
+        <h2 class="section-title">Cuando me extrañes</h2>
+        <p class="section-sub">Abrí esto y voy a estar ahí.</p>
+        <div class="miss-wrap">
+          <button id="btn-miss" class="btn-primary">Leer un mensaje</button>
+          <div id="miss-card" class="miss-card hidden">
+            <p id="miss-text" class="miss-text"></p>
+            <button id="btn-miss-another" class="btn-ghost">Otro mensaje</button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 10. CARTA FINAL -->
+    <!-- 10. CAPÍTULOS QUE NOS FALTAN -->
+    <section id="capitulos" class="section">
+      <div class="section-inner">
+        <span class="section-label">10</span>
+        <h2 class="section-title">Los capítulos que todavía nos faltan escribir</h2>
+        <p class="section-sub">Todo lo que nos espera.</p>
+        <div id="future-grid" class="future-grid"></div>
+      </div>
+    </section>
+
+    <!-- 11. CARTA FINAL -->
     <section id="carta-final" class="section">
       <div class="section-inner center">
-        <span class="section-label">10</span>
+        <span class="section-label">11</span>
         <div class="final-letter">
           <svg class="final-heart" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M50 85 C50 85 5 55 5 28 C5 14 16 5 28 5 C36 5 44 9 50 16 C56 9 64 5 72 5 C84 5 95 14 95 28 C95 55 50 85 50 85 Z"/>
           </svg>
-          <h2 class="final-title">Para siempre.</h2>
-          <p class="final-text">
-            No importa la distancia.<br>
-            No importa el tiempo.<br>
-            Siempre voy a encontrar el camino de vuelta a vos.
-          </p>
-          <p class="final-signature">Con todo mi amor.</p>
+          <p class="final-quote">La mejor parte de nuestra historia<br>todavía está por escribirse.</p>
+          <p class="final-page">Página 1 de ∞</p>
         </div>
       </div>
     </section>
@@ -208,8 +303,9 @@
   <script src="js/letters.js"></script>
   <script src="js/reasons.js"></script>
   <script src="js/promises.js"></script>
-  <script src="js/garden.js"></script>
+  <script src="js/music.js"></script>
   <script src="js/messages.js"></script>
+  <script src="js/future.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
