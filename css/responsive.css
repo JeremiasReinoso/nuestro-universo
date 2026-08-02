@@ -1,29 +1,31 @@
-@media (max-width: 992px) {
+@media (max-width: 1400px) {
+  .section {
+    padding: 6rem 3rem 3rem;
+  }
+  
+  .section-title {
+    font-size: 2.2rem;
+    letter-spacing: 5px;
+    margin-bottom: 4rem;
+  }
+  
   .content-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 3rem;
   }
-
-  .section {
-    padding: 6rem 1.5rem 3rem;
-  }
-
-  .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-  }
-
-  .polaroid {
-    border-width: 8px;
+  
+  .visual-content {
+    height: 300px;
   }
 }
 
-@media (max-width: 768px) {
-  .logo {
-    font-size: 1.25rem;
+@media (max-width: 992px) {
+  .header {
+    padding: 1rem 2rem;
   }
-
+  
   .nav {
+    display: none;
     position: fixed;
     top: 0;
     right: -100%;
@@ -31,154 +33,161 @@
     height: 100vh;
     flex-direction: column;
     background: rgba(0, 0, 0, 0.95);
-    padding: 5rem 2rem;
-    gap: 1rem;
-    transition: var(--transition);
-    z-index: 999;
+    padding: 6rem 2rem;
+    gap: 2rem;
+    transition: right 0.4s ease;
+    z-index: 1000;
+    border-left: 1px solid rgba(255, 0, 255, 0.3);
   }
-
+  
   .nav.active {
     right: 0;
   }
-
+  
+  .nav a {
+    font-size: 1rem;
+    padding: 0.75rem 0;
+  }
+  
   .menu-toggle {
     display: block;
   }
-
-  .hero-title {
-    font-size: 2.5rem;
+  
+  .section {
+    padding: 5rem 2rem 2rem;
   }
-
-  .hero-subtitle {
-    font-size: 1.25rem;
-  }
-
-  .cta-button {
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
-  }
-
+  
   .section-title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    margin-bottom: 3rem;
   }
+  
+  .section-title::before {
+    width: 80px;
+  }
+  
+  .glass-card {
+    padding: 1.5rem;
+  }
+  
+  .flip-card {
+    width: 240px;
+    height: 160px;
+  }
+}
 
-  .section-title::after {
-    width: 40px;
+@media (max-width: 768px) {
+  .header {
+    padding: 0.75rem;
+  }
+  
+  .logo {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+  
+  .nav {
+    width: 100%;
+    right: 0;
+    padding: 5rem 1.5rem;
+  }
+  
+  .nav a {
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+  }
+  
+  .section {
+    padding: 4rem 1.5rem 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 2.5rem;
+  }
+  
+  .section-title::before {
+    width: 60px;
+  }
+  
+  .glass-card {
+    padding: 1.25rem;
+    margin: 1rem;
+  }
+  
+  .flip-card {
+    width: 200px;
+    height: 140px;
+  }
+  
+  .progress-bar {
     height: 2px;
   }
-
-  .countdown-item {
-    text-align: center;
-  }
-
-  #days, #hours, #minutes, #seconds {
-    font-size: 1.5rem;
-  }
-
-  .flower {
-    width: 70px;
-    height: 70px;
-  }
-
-  .flower-message {
-    font-size: 0.75rem;
-    max-width: 150px;
-    bottom: -60px;
+  
+  .scroll-top {
+    bottom: 2rem;
+    right: 2rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .header {
-    padding: 1rem;
-  }
-
-  .logo {
-    font-size: 1rem;
-  }
-
   .nav {
-    width: 100%;
-    right: 0;
-    padding: 4rem 1.5rem;
+    padding: 4rem 1rem;
+    gap: 1.5rem;
   }
-
+  
   .nav a {
-    padding: 1rem;
-    font-size: 1rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
   }
-
-  .hero-title {
-    font-size: 2rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-
+  
   .polaroid {
     border-width: 6px;
   }
-
-  .section-title::after {
-    width: 30px;
+  
+  .section-title::before {
+    width: 40px;
   }
-}
-
-@media (max-width: 576px and (orientation: landscape) and (max-height: 500px) {
-  .section {
-    padding: 4rem 1rem 2rem;
-  }
-
+  
   .section-title {
-    font-size: 1.75rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
   }
-
-  .content-grid {
-    grid-template-columns: 1fr;
+  
+  .glass-card {
+    padding: 1rem;
   }
-
-  .visual-content {
-    height: 300px;
+  
+  .flip-card {
+    width: 160px;
+    height: 120px;
   }
-}
-
-@supports (display: grid) {
-  .content-grid {
-    display: grid;
+  
+  .flip-card-front, .flip-card-back {
+    padding: 1rem;
   }
-}
-
-@supports (display: flex) {
-  .gallery-grid,
-  .reasons-grid,
-  .memories-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
+  
+  .reason-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
   }
-
-  .gallery-grid > .polaroid,
-  .reasons-grid > .flip-card,
-  .memories-grid > .memory-item {
-    flex: 1 1 300px;
-    min-width: 250px;
+  
+  .reason-text {
+    font-size: 0.8rem;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+@media (max-height: 700px) and (min-width: 768px) {
+  .section {
+    padding: 4rem 3rem 2rem;
   }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary-color: #0f0f1a;
-    --secondary-color: #1a1a2e;
+  
+  .section-title {
+    margin-bottom: 2rem;
   }
 }
