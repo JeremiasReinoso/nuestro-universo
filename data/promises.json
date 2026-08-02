@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "text": "Prometo estar siempre a tu lado",
+    "date": "2024-01-01",
+    "revealed": true
+  },
+  {
+    "id": 2,
+    "text": "Prometo amarte con el corazón abierto",
+    "date": "2024-06-15",
+    "revealed": true
+  },
+  {
+    "id": 3,
+    "text": "Prometo soñar contigo para siempre",
+    "date": "2025-01-01",
+    "revealed": false
+  }
+]

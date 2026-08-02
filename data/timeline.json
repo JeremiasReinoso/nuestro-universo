@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "date": "2024-01-15",
+    "title": "Primer Encuentro",
+    "description": "El día que todo cambió para siempre",
+    "icon": "star"
+  },
+  {
+    "id": 2,
+    "date": "2024-02-14",
+    "title": "Primer Beso",
+    "description": "El momento en que supimos que estábamos juntos",
+    "icon": "heart"
+  },
+  {
+    "id": 3,
+    "date": "2024-03-20",
+    "title": "Primer Viaje",
+    "description": "Descubrimos que los dos podemos ser felices",
+    "icon": "globe"
+  }
+]

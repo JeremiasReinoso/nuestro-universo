@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Nuestro primer beso",
+    "src": "assets/images/placeholder.svg",
+    "caption": "Un momento mágico"
+  },
+  {
+    "id": 2,
+    "title": "Viaje a la playa",
+    "src": "assets/images/placeholder.svg",
+    "caption": "El sol y la arena"
+  }
+]

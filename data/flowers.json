@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Rosa Roja",
+    "color": "#e74c3c",
+    "message": "Amor eterno",
+    "type": "recuerdo",
+    "position": { "x": 20, "y": 30 }
+  },
+  {
+    "id": 2,
+    "name": "Flor de Noche",
+    "color": "#9b59b6",
+    "message": "Nuestro secreto bajo las estrellas",
+    "type": "promesa",
+    "position": { "x": 50, "y": 40 }
+  },
+  {
+    "id": 3,
+    "name": "Margarita",
+    "color": "#3498db",
+    "message": "Nuestra alegría",
+    "type": "razón",
+    "position": { "x": 80, "y": 25 }
+  }
+]

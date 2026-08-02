@@ -1,0 +1,20 @@
+{
+  "title": "Nuestro Universo",
+  "description": "Un viaje por el corazón de nuestro amor",
+  "author": "Tu nombre",
+  "primaryColor": "#e74c3c",
+  "secondaryColor": "#9b59b6",
+  "accentColor": "#3498db",
+  "musicVolume": 0.5,
+  "countdownDate": "2026-12-25T00:00:00",
+  "translations": {
+    "es": {
+      "title": "Nuestro Universo",
+      "description": "Un viaje por el corazón de nuestro amor"
+    },
+    "en": {
+      "title": "Our Universe",
+      "description": "A journey through the heart of our love"
+    }
+  }
+}

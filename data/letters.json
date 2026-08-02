@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "sender": "De mi corazón",
+    "date": "2024-01-15",
+    "subject": "Nuestro primer beso",
+    "content": "Mi amor,\n\nHoy quiero escribirte sobre ese momento mágico que quedará grabado en mi corazón para siempre. Ese beso que nos hizo descubrir que estábamos hechos para serenos... todos vosotros.",
+    "revealed": false
+  },
+  {
+    "id": 2,
+    "sender": "Tu voz",
+    "date": "2024-02-10",
+    "subject": "Te extraño",
+    "content": "Cuando no estás aquí, mi universo pierde un poco de color. Pero ese color lo traigo en mis recuerdos y lo vuelvo a vivir cada vez que pienso en ti.",
+    "revealed": false
+  }
+]

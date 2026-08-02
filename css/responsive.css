@@ -1,0 +1,184 @@
+@media (max-width: 992px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .section {
+    padding: 6rem 1.5rem 3rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .polaroid {
+    border-width: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 5rem 2rem;
+    gap: 1rem;
+    transition: var(--transition);
+    z-index: 999;
+  }
+
+  .nav.active {
+    right: 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .cta-button {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-title::after {
+    width: 40px;
+    height: 2px;
+  }
+
+  .countdown-item {
+    text-align: center;
+  }
+
+  #days, #hours, #minutes, #seconds {
+    font-size: 1.5rem;
+  }
+
+  .flower {
+    width: 70px;
+    height: 70px;
+  }
+
+  .flower-message {
+    font-size: 0.75rem;
+    max-width: 150px;
+    bottom: -60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  .nav {
+    width: 100%;
+    right: 0;
+    padding: 4rem 1.5rem;
+  }
+
+  .nav a {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .polaroid {
+    border-width: 6px;
+  }
+
+  .section-title::after {
+    width: 30px;
+  }
+}
+
+@media (max-width: 576px and (orientation: landscape) and (max-height: 500px) {
+  .section {
+    padding: 4rem 1rem 2rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visual-content {
+    height: 300px;
+  }
+}
+
+@supports (display: grid) {
+  .content-grid {
+    display: grid;
+  }
+}
+
+@supports (display: flex) {
+  .gallery-grid,
+  .reasons-grid,
+  .memories-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .gallery-grid > .polaroid,
+  .reasons-grid > .flip-card,
+  .memories-grid > .memory-item {
+    flex: 1 1 300px;
+    min-width: 250px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #0f0f1a;
+    --secondary-color: #1a1a2e;
+  }
+}
