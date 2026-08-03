@@ -1,0 +1,140 @@
+/* ============================================================
+   BASE — Sistema visual completo
+   Variables, reset, tipografía, utilidades
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap');
+
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+  /* Fondo */
+  --bg-void:        #04040a;
+  --bg-deep:        #070712;
+  --bg-space:       #0a0a1a;
+  --bg-violet:      #0d0818;
+
+  /* Acento */
+  --neon-red:       #ff2d55;
+  --neon-pink:      #ff3b8b;
+  --neon-fuchsia:   #d63af9;
+  --white:          #f5f5f7;
+  --white-dim:      rgba(245,245,247,0.55);
+  --white-ghost:    rgba(245,245,247,0.12);
+
+  /* Glow */
+  --glow-red:       0 0 40px rgba(255,45,85,0.45), 0 0 80px rgba(255,45,85,0.18);
+  --glow-pink:      0 0 30px rgba(255,59,139,0.4);
+  --glow-fuchsia:   0 0 30px rgba(214,58,249,0.35);
+
+  /* Tipografía */
+  --font-serif:     'Cormorant Garamond', Georgia, serif;
+  --font-sans:      'Inter', system-ui, sans-serif;
+
+  /* Escala tipográfica */
+  --text-xs:        0.75rem;
+  --text-sm:        0.875rem;
+  --text-base:      1rem;
+  --text-lg:        1.25rem;
+  --text-xl:        1.75rem;
+  --text-2xl:       2.5rem;
+  --text-3xl:       3.5rem;
+  --text-4xl:       5rem;
+
+  /* Espaciado */
+  --space-1:        0.25rem;
+  --space-2:        0.5rem;
+  --space-3:        0.75rem;
+  --space-4:        1rem;
+  --space-6:        1.5rem;
+  --space-8:        2rem;
+  --space-12:       3rem;
+  --space-16:       4rem;
+  --space-24:       6rem;
+
+  /* Transiciones */
+  --ease-slow:      cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-out:       cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-in-out:    cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-slow:  1200ms;
+  --duration-med:   600ms;
+  --duration-fast:  300ms;
+
+  /* Layout */
+  --max-content:    680px;
+  --chapter-height: 100svh;
+}
+
+/* ── Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--bg-void);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
+a { color: inherit; text-decoration: none; }
+
+/* ── Tipografía ─────────────────────────────────────────────── */
+.serif        { font-family: var(--font-serif); }
+.serif-italic { font-family: var(--font-serif); font-style: italic; }
+
+.t-xs   { font-size: var(--text-xs); }
+.t-sm   { font-size: var(--text-sm); }
+.t-lg   { font-size: var(--text-lg); }
+.t-xl   { font-size: var(--text-xl); }
+.t-2xl  { font-size: var(--text-2xl); }
+.t-3xl  { font-size: var(--text-3xl); }
+.t-4xl  { font-size: var(--text-4xl); }
+
+.dim    { color: var(--white-dim); }
+.ghost  { color: var(--white-ghost); }
+.center { text-align: center; }
+.upper  { text-transform: uppercase; letter-spacing: 0.15em; }
+
+/* ── Utilidades de visibilidad ──────────────────────────────── */
+.hidden   { display: none !important; }
+.invisible { opacity: 0; pointer-events: none; }
+
+.fade-in {
+  animation: fadeIn var(--duration-slow) var(--ease-out) forwards;
+}
+.fade-out {
+  animation: fadeOut var(--duration-med) var(--ease-in-out) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg-void); }
+::-webkit-scrollbar-thumb { background: var(--white-ghost); border-radius: 2px; }
+
+/* ── Selección ──────────────────────────────────────────────── */
+::selection {
+  background: rgba(255, 45, 85, 0.25);
+  color: var(--white);
+}
