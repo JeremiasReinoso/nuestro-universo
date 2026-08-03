@@ -75,13 +75,11 @@
 
       <div class="dist-header">
         <span class="section-label">03</span>
-        <h2 class="dist-title">La distancia que <em>nos une</em></h2>
-        <p class="dist-subtitle">Siete mil kilómetros que no pudieron <span class="dist-word-accent">separarnos.</span></p>
+        <h2 class="dist-title">La distancia que <span class="dist-title-accent">nos une</span></h2>
+        <p class="dist-subtitle">Siete mil kilómetros que no pudieron <span class="dist-subtitle-accent">separarnos.</span></p>
       </div>
 
-      <!-- LAYOUT ESCRITORIO: mapa centro, tarjetas laterales -->
       <div class="dist-layout">
-
         <!-- Tarjeta Argentina -->
         <div class="dist-card dist-card--left">
           <div class="dist-card__flag" aria-label="Bandera de Argentina">
@@ -108,29 +106,52 @@
           <h3 class="dist-card__country">Argentina</h3>
           <p class="dist-card__city">El Hoyo, Chubut</p>
           <div class="dist-card__time" id="time-ar">--:--</div>
-          <div class="dist-card__temp">Patagonia</div>
+          <div class="dist-card__temp" id="temp-ar">Patagonia</div>
         </div>
 
-        <!-- Mapa central -->
+        <!-- Mapa con SVG -->
         <div class="dist-map-wrap">
-          <canvas id="distance-map-canvas"></canvas>
+          <div class="dist-svg-map" id="dist-svg-map" aria-hidden="true"></div>
 
-          <!-- Corazón central sobre el mapa -->
+          <!-- Corazón central -->
           <div class="dist-heart-wrap">
             <svg class="dist-heart-svg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <defs>
-                <filter id="heart-glow">
-                  <feGaussianBlur stdDeviation="3" result="blur"/>
-                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                <filter id="dist-heart-glow">
+                  <feGaussianBlur stdDeviation="4" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
                 </filter>
               </defs>
-              <path filter="url(#heart-glow)" d="M50 82 C50 82 8 54 8 28 C8 15 18 7 29 7 C37 7 44 11 50 18 C56 11 63 7 71 7 C82 7 92 15 92 28 C92 54 50 82 50 82 Z"/>
+              <path class="dist-heart-path" d="M50 82 C50 82 8 54 8 28 C8 15 18 7 29 7 C37 7 44 11 50 18 C56 11 63 7 71 7 C82 7 92 15 92 28 C92 54 50 82 50 82 Z"/>
             </svg>
-            <div class="dist-km">
-              <span class="dist-km__value">~7 200 km</span>
+            <div class="dist-km-wrapper">
+              <span class="dist-km__label">~7 200 km</span>
             </div>
           </div>
         </div>
+
+        <!-- Línea curva luminosa -->
+        <svg class="dist-connection-line" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" class="stop-pink"/>
+              <stop offset="50%" class="stop-violet"/>
+              <stop offset="100%" class="stop-celeste"/>
+            </linearGradient>
+            <linearGradient id="glow-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ff3c78"/>
+              <stop offset="100%" stop-color="#00c8ff"/>
+            </linearGradient>
+          </defs>
+          <path class="line-glow" d="M150 330 Q250 100 380 340"/>
+          <path class="line-main" d="M150 330 Q250 100 380 340"/>
+          <circle class="dot-origin" cx="150" cy="330"/>
+          <circle class="dot-dest" cx="380" cy="340"/>
+          <polygon class="dest-glow" points="380,340 388,355 395,340 388,325"/>
+        </svg>
 
         <!-- Tarjeta República Dominicana -->
         <div class="dist-card dist-card--right">
@@ -150,65 +171,54 @@
           <h3 class="dist-card__country">Rep. Dominicana</h3>
           <p class="dist-card__city" id="dist-city-do">Santo Domingo</p>
           <div class="dist-card__time" id="time-do">--:--</div>
-          <div class="dist-card__temp">El Caribe</div>
+          <div class="dist-card__temp" id="temp-do">El Caribe</div>
         </div>
+      </div>
 
-      </div><!-- /.dist-layout -->
-
-      <!-- Frase -->
+      <!-- Frase elegante -->
       <div class="dist-quote">
-        <span class="dist-quote__mark dist-quote__mark--open" aria-hidden="true">
-          <svg viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 24V14.4C0 6.4 4.8 1.6 14.4 0l1.6 3.2C10.4 4.8 7.2 7.6 6.4 12H12V24H0ZM20 24V14.4C20 6.4 24.8 1.6 34.4 0L36 3.2C30.4 4.8 27.2 7.6 26.4 12H32V24H20Z" fill="currentColor"/></svg>
-        </span>
+        <span class="dist-quote__mark dist-quote__mark--open" aria-hidden="true">&#8220;</span>
         <p class="dist-quote__text">La distancia no es un obstáculo.<br>Es la prueba de que lo nuestro vale el esfuerzo.</p>
+        <span class="dist-quote__mark dist-quote__mark--close" aria-hidden="true">&#8221;</span>
       </div>
 
       <!-- Barra inferior -->
       <div class="dist-bar">
         <div class="dist-bar__item">
-          <div class="dist-bar__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-          </div>
+          <svg class="dist-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
           <p class="dist-bar__line1">Distintos lugares</p>
           <p class="dist-bar__line2">Pero el mismo cielo.</p>
         </div>
         <div class="dist-bar__sep" aria-hidden="true"></div>
         <div class="dist-bar__item">
-          <div class="dist-bar__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
-          </div>
+          <svg class="dist-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
           <p class="dist-bar__line1">Mismo corazón</p>
           <p class="dist-bar__line2">Que late por vos.</p>
         </div>
         <div class="dist-bar__sep" aria-hidden="true"></div>
         <div class="dist-bar__item">
-          <div class="dist-bar__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
+          <svg class="dist-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
           <p class="dist-bar__line1">Mismas ganas</p>
           <p class="dist-bar__line2">De construir juntos.</p>
         </div>
         <div class="dist-bar__sep" aria-hidden="true"></div>
         <div class="dist-bar__item">
-          <div class="dist-bar__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-            </svg>
-          </div>
+          <svg class="dist-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
           <p class="dist-bar__line1">Mismo destino</p>
           <p class="dist-bar__line2">Esperándonos.</p>
         </div>
       </div>
-
     </section>
 
     <!-- 4. ASÍ TE VEO -->
