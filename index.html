@@ -71,37 +71,77 @@
 
     <!-- 3. LA DISTANCIA QUE NOS UNE -->
     <section id="distancia" class="section">
-      <div class="section-inner center">
-        <span class="section-label">03</span>
-        <h2 class="section-title">La distancia que nos une</h2>
-        <p class="section-sub">Siete mil kilómetros que no pudieron separarnos.</p>
-        <div class="distance-visual">
-          <div class="distance-country">
-            <span class="distance-flag">🇦🇷</span>
-            <span class="distance-city">Argentina</span>
+      <div class="stars-container" id="stars-distance"></div>
+      <h2 class="section-title-premium">La distancia que <span class="highlight">une</span></h2>
+      <p class="section-subtitle">Siete mil kilómetros que no pudieron separarnos.</p>
+      
+      <div class="distance-container">
+        <div class="distance-canvas-wrapper">
+          <canvas id="distance-map-canvas"></canvas>
+          <div class="map-glow"></div>
+        </div>
+        
+        <div class="distance-central">
+          <div class="heart-container">
+            <svg class="neon-heart" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M50 85 C50 85 5 55 5 28 C5 14 16 5 28 5 C36 5 44 9 50 16 C56 9 64 5 72 5 C84 5 95 14 95 28 C95 55 50 85 50 85 Z"/>
+            </svg>
           </div>
-          <div class="distance-connector">
-            <div class="distance-line-wrap">
-              <div class="distance-beam"></div>
-              <div class="distance-heart-mid">
-                <svg viewBox="0 0 40 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M20 34 C20 34 2 22 2 11 C2 5.5 6.5 2 11 2 C14.5 2 17.5 3.8 20 6.5 C22.5 3.8 25.5 2 29 2 C33.5 2 38 5.5 38 11 C38 22 20 34 20 34 Z"/>
-                </svg>
-              </div>
-            </div>
-            <span class="distance-km">~7 200 km</span>
-          </div>
-          <div class="distance-country">
-            <span class="distance-flag">🇩🇴</span>
-            <span class="distance-city">República Dominicana</span>
+          
+          <div class="distance-display">
+            <span class="distance-value">~7 200 km</span>
           </div>
         </div>
-        <p class="distance-quote">
-          "La distancia no es un obstáculo.<br>
-          Es la prueba de que lo nuestro vale el esfuerzo."
-        </p>
+        
+        <div class="country-cards">
+          <div class="country-card argentina">
+            <div class="country-flag">🇦🇷</div>
+            <h3 class="country-name">Argentina</h3>
+            <p class="country-city">El Hoyo, Chubut</p>
+            <div class="country-time" id="time-ar">--:--</div>
+          </div>
+          
+          <div class="country-card dominican">
+            <div class="country-flag">🇩🇴</div>
+            <h3 class="country-name">República Dominicana</h3>
+            <p class="country-city">Ciudad configurable</p>
+            <div class="country-time" id="time-do">--:--</div>
+          </div>
+        </div>
       </div>
-    </section>
+      
+      <div class="distance-quote">
+        <span class="quote-mark-open">❝</span>
+        <p>"La distancia no es un obstáculo. Es la prueba de que lo nuestro vale el esfuerzo."</p>
+        <span class="quote-mark-close">❞</span>
+      </div>
+    </div>
+
+    <div class="lower-bar">
+      <div class="bar-item">
+        <div class="bar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 12l-1.5 1.5-1.5-1.5V8h-1v4h4v-4h-1z"/></svg></div>
+        <p>Diferentes lugares</p>
+        <p>Pero el mismo cielo</p>
+      </div>
+      <div class="bar-separator"></div>
+      <div class="bar-item">
+        <div class="bar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5-6-10a6 6 0 0 1 12 0c0 5-6 10-6 10z"/></svg></div>
+        <p>Mismo corazón</p>
+        <p>Que late por vos</p>
+      </div>
+      <div class="bar-separator"></div>
+      <div class="bar-item">
+        <div class="bar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 12 4 2 12 12 20"/></svg></div>
+        <p>Mismas ganas</p>
+        <p>De construir juntos</p>
+      </div>
+      <div class="bar-separator"></div>
+      <div class="bar-item">
+        <div class="bar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 12 5 20 12 12 19"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <p>Mismo destino</p>
+        <p>Esperándonos</p>
+      </div>
+    </div>
 
     <!-- 4. ASÍ TE VEO -->
     <section id="galeria" class="section">
@@ -390,6 +430,7 @@
   <script src="js/photos.js"></script>
   <script src="js/dreams.js"></script>
   <script src="js/capsula.js"></script>
+  <script src="js/distance.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
