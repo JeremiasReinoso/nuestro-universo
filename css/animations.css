@@ -1,160 +1,45 @@
-/* ═══════════════════════════════════════════════════════
-   ANIMACIONES — NUESTRO UNIVERSO
-   ═══════════════════════════════════════════════════════ */
-
-/* ── Keyframes ── */
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1);   filter: drop-shadow(0 0 4px var(--pink)); }
-  14%       { transform: scale(1.18); filter: drop-shadow(0 0 14px var(--pink)); }
-  28%       { transform: scale(1);   filter: drop-shadow(0 0 4px var(--pink)); }
-  42%       { transform: scale(1.1); filter: drop-shadow(0 0 10px var(--pink)); }
-}
-
+/* ── ANIMATIONS ── */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes scrollLine {
-  0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
-  50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
-  100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
-}
-
-@keyframes distancePulse {
-  0%   { left: -30%; }
-  100% { left: 130%; }
-}
-
-@keyframes entryExit {
-  from { opacity: 1; }
-  to   { opacity: 0; pointer-events: none; }
-}
-
-/* ── Entrada: corazón aparece ── */
-#heart-container.animate {
-  animation: fadeIn 0.8s ease forwards;
-}
-
-/* ── Corazón latiendo ── */
-#heart-svg.beating #heart-path {
-  animation: heartbeat 2.4s ease-in-out infinite;
-}
-
-/* ── Tagline aparece ── */
-#entry-tagline.animate {
-  animation: fadeIn 0.8s ease 0.4s forwards;
-}
-
-/* ── Botón entrar aparece ── */
-#btn-enter.animate {
-  animation: fadeIn 0.8s ease 0.9s forwards;
-}
-
-/* ── Salida pantalla de entrada ── */
-#entry-screen.exit {
-  animation: entryExit 0.6s ease forwards;
-}
-
-/* ── Main aparece ── */
-#main.visible {
-  animation: fadeIn 0.6s ease forwards;
-}
-#main.visible { display: block !important; opacity: 0; }
-
-/* ── Secciones: fade al hacer scroll ── */
-.section-inner > .section-label,
-.section-inner > .section-title,
-.section-inner > .section-sub,
-.section-inner > .display-title,
-.section-inner > .display-sub,
-.section-inner > .scroll-hint,
-.section-inner > .distance-card,
-.section-inner > .distance-note,
-.section-inner > .daily-card,
-.section-inner > .final-letter {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.section.in-view .section-inner > * {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Delays escalonados para hijos directos */
-.section.in-view .section-inner > *:nth-child(1) { transition-delay: 0s; }
-.section.in-view .section-inner > *:nth-child(2) { transition-delay: 0.08s; }
-.section.in-view .section-inner > *:nth-child(3) { transition-delay: 0.16s; }
-.section.in-view .section-inner > *:nth-child(4) { transition-delay: 0.24s; }
-.section.in-view .section-inner > *:nth-child(5) { transition-delay: 0.32s; }
-.section.in-view .section-inner > *:nth-child(6) { transition-delay: 0.40s; }
-
-/* Razones: delay por índice (aplicado via JS con style) */
-.reason-card { transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease; }
-
-/* Promesas: delay por índice */
-.promise-item { transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease; }
-
-
-/* ── DISTANCIA ANIMATIONS ── */
-@keyframes lineGlow {
-  0% { stroke-width: 8; opacity: 0.6; }
-  50% { stroke-width: 12; opacity: 0.9; }
-  100% { stroke-width: 8; opacity: 0.6; }
-}
-
-@keyframes lineDash {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: 28; }
-}
-
-@keyframes pulseDot {
-  0%, 100% { r: 5; opacity: 1; }
-  50% { r: 7; opacity: 0.7; }
-}
-
-@keyframes destGlow {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
-}
-
-@keyframes glowPulse {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 0.9; }
-}
-
-@keyframes pulseTravel {
-  0% { 
-    d: path("M150 310 Q180 180 280 80");
+  to {
     opacity: 1;
-    filter: drop-shadow(0 0 6px #ff3c78);
   }
-  50% { 
-    d: path("M150 310 Q235 160 320 120");
+}
+
+@keyframes fadeInUp {
+  to {
     opacity: 1;
-    filter: drop-shadow(0 0 6px #00c8ff);
-  }
-  100% { 
-    d: path("M150 310 Q260 80 360 80");
-    opacity: 0;
+    transform: translateY(0);
   }
 }
 
-.stop-pink { stop-color: var(--pink); }
-.stop-violet { stop-color: var(--neon-violeta); }
-.stop-celeste { stop-color: var(--neon-celeste); }
-
-/* Gradient colors for worlds */
-#arg-gradient {
-  stop-color: #00b4ff;
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-#arg-inner {
-  stop-color: rgba(0, 180, 255, 0.6);
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ── LOADING SPINNER ── */
+.loading {
+  display: none;
 }
