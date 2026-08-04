@@ -2,7 +2,6 @@
   'use strict';
 
   let currentScene = 0;
-  let shownMessages = JSON.parse(localStorage.getItem('missMessages') || '[]');
 
   const messages = [
     'Gracias por aparecer en mi vida.',
@@ -26,10 +25,12 @@
     'Decirte "te amo" por voz por primera vez'
   ];
 
+  const msgHistoryKey = 'missMessagesHistory';
+
   function loadMessages() {
     const container = document.getElementById('messages');
     if (!container) return;
-    
+
     container.innerHTML = messages.map(function(msg) {
       return '<div class="message-card"><p class="message-text">' + escapeHtml(msg) + '</p></div>';
     }).join('');
@@ -38,7 +39,7 @@
   function loadDreams() {
     const container = document.getElementById('dreams');
     if (!container) return;
-    
+
     container.innerHTML = dreams.map(function(dream) {
       return '<div class="dream-card"><p class="dream-text">' + escapeHtml(dream) + '</p></div>';
     }).join('');
@@ -53,7 +54,7 @@
   function initIntro() {
     const intro = document.getElementById('intro');
     const enterBtn = document.getElementById('enter-btn');
-    
+
     function start() {
       if (intro) {
         intro.classList.add('hidden');
@@ -63,10 +64,12 @@
         if (firstScene) {
           firstScene.classList.add('visible');
           currentScene = 1;
+          loadMessages();
+          loadDreams();
         }
       }, 100);
     }
-    
+
     if (enterBtn) {
       enterBtn.addEventListener('click', start);
     }
@@ -87,8 +90,6 @@
       scenes.forEach(function(scene) {
         scene.classList.add('visible');
       });
-      loadMessages();
-      loadDreams();
       return;
     }
 
@@ -101,31 +102,7 @@
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           const scene = entry.target;
-          const sceneNum = parseInt(scene.id.replace('scene', ''), 10);
-          
-          if (!scene.classList.contains('visible')) {
-            scene.classList.add('visible');
-            currentScene = sceneNum;
-          }
-          
-          if (sceneNum === 3 && !document.getElementById('messages-loaded')) {
-            loadMessages();
-            document.getElementById('messages-loaded')?.remove();
-            const tag = document.createElement('span');
-            tag.id = 'messages-loaded';
-            tag.style.display = 'none';
-            scene.appendChild(tag);
-          }
-          
-          if (sceneNum === 5 && !document.getElementById('dreams-loaded')) {
-            loadDreams();
-            if (!document.getElementById('dreams-loaded')) {
-              const tag = document.createElement('span');
-              tag.id = 'dreams-loaded';
-              tag.style.display = 'none';
-              scene.appendChild(tag);
-            }
-          }
+          scene.classList.add('visible');
         }
       });
     }, options);
@@ -140,75 +117,115 @@
     const btn = document.getElementById('miss-btn');
     const card = document.getElementById('miss-card');
     const textEl = document.getElementById('miss-text');
-    
+    const history = JSON.parse(localStorage.getItem(msgHistoryKey) || '[]');
+
     if (!btn) return;
-    
+
     btn.addEventListener('click', function() {
       if (!card.classList.contains('showing')) {
         card.classList.add('showing');
       }
-      
-      const available = messages.filter(function(_, i) {
-        return shownMessages.indexOf(i) === -1;
+
+      let available = messages.filter(function(msg, i) {
+        return history.indexOf(i) === -1;
       });
-      
+
       let msg;
       if (available.length === 0) {
-        shownMessages = [];
-        localStorage.setItem('missMessages', JSON.stringify(shownMessages));
+        localStorage.setItem(msgHistoryKey, JSON.stringify([]));
         msg = messages[Math.floor(Math.random() * messages.length)];
       } else {
-        const idx = Math.floor(Math.random() * available.length);
-        msg = available[idx];
-        shownMessages.push(messages.indexOf(msg));
+        const idx = messages.indexOf(available[Math.floor(Math.random() * available.length)]);
+        history.push(idx);
+        localStorage.setItem(msgHistoryKey, JSON.stringify(history));
+        msg = available[history[history.length - 1]];
       }
-      
-      localStorage.setItem('missMessages', JSON.stringify(shownMessages));
+
       textEl.textContent = msg;
     });
   }
 
   function updateClock() {
-    const now = new Date();
-    const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const seconds = now.getSeconds().toString().padStart(2, '0');
-    
-    const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-    const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-    
-    document.getElementById('hours').textContent = hours;
-    document.getElementById('minutes').textContent = minutes;
-    document.getElementById('seconds').textContent = seconds;
-    document.getElementById('day').textContent = days[now.getDay()];
-    document.getElementById('month').textContent = months[now.getMonth()];
-    document.getElementById('day-num').textContent = now.getDate();
-    document.getElementById('year').textContent = now.getFullYear();
-  }
+    const arFormatter = new Intl.DateTimeFormat('es-AR', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+      timeZone: 'America/Argentina/Catamarca'
+    });
 
-  function initClock() {
-    updateClock();
-    setInterval(updateClock, 1000);
-  }
+    const doFormatter = new Intl.DateTimeFormat('es-DO', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+      timeZone: 'America/Santo_Domingo'
+    });
 
-  function initFloatingPlayer() {
-    const player = document.getElementById('floating-player');
-    const timeEl = document.getElementById('player-time');
-    
-    if (player) {
-      player.classList.add('floating-player-visible');
-    }
-    
-    function updateTime() {
-      if (!timeEl) return;
+    function updateTimeAr() {
       const now = new Date();
-      const mins = now.getMinutes().toString().padStart(2, '0');
-      const secs = now.getSeconds().toString().padStart(2, '0');
-      timeEl.textContent = mins + ':' + secs;
+      const parts = arFormatter.formatToParts(now);
+      const hour = parts.find(function(p) { return p.type === 'hour'; }).value;
+      const min = parts.find(function(p) { return p.type === 'minute'; }).value;
+      const sec = parts.find(function(p) { return p.type === 'second'; }).value;
+      const weekday = parts.find(function(p) { return p.type === 'weekday'; }).value;
+      const day = parts.find(function(p) { return p.type === 'day'; }).value;
+      const month = parts.find(function(p) { return p.type === 'month'; }).value;
+      const year = parts.find(function(p) { return p.type === 'year'; }).value;
+
+      const hourEl = document.getElementById('hour-ar');
+      const minEl = document.getElementById('min-ar');
+      const secEl = document.getElementById('sec-ar');
+      const dateEl = document.getElementById('date-ar');
+
+      if (hourEl) hourEl.textContent = hour;
+      if (minEl) minEl.textContent = min;
+      if (secEl) secEl.textContent = sec;
+      if (dateEl) dateEl.textContent = weekday + ', ' + day + ' ' + month + ' ' + year;
     }
-    
-    setInterval(updateTime, 1000);
-    updateTime();
+
+    function updateTimeDo() {
+      const now = new Date();
+      const parts = doFormatter.formatToParts(now);
+      const hour = parts.find(function(p) { return p.type === 'hour'; }).value;
+      const min = parts.find(function(p) { return p.type === 'minute'; }).value;
+      const sec = parts.find(function(p) { return p.type === 'second'; }).value;
+      const weekday = parts.find(function(p) { return p.type === 'weekday'; }).value;
+      const day = parts.find(function(p) { return p.type === 'day'; }).value;
+      const month = parts.find(function(p) { return p.type === 'month'; }).value;
+      const year = parts.find(function(p) { return p.type === 'year'; }).value;
+
+      const hourEl = document.getElementById('hour-do');
+      const minEl = document.getElementById('min-do');
+      const secEl = document.getElementById('sec-do');
+      const dateEl = document.getElementById('date-do');
+
+      if (hourEl) hourEl.textContent = hour;
+      if (minEl) minEl.textContent = min;
+      if (secEl) secEl.textContent = sec;
+      if (dateEl) dateEl.textContent = weekday + ', ' + day + ' ' + month + ' ' + year;
+    }
+
+    updateTimeAr();
+    updateTimeDo();
+    setInterval(updateTimeAr, 1000);
+    setInterval(updateTimeDo, 1000);
+  }
+
+  function initClocks() {
+    const clockContainer = document.querySelector('.clocks-container');
+    if (clockContainer) {
+      clockContainer.classList.add('visible');
+    }
+    updateClock();
   }
 
   function initFooter() {
@@ -220,29 +237,12 @@
     }
   }
 
-  function initPlayButton() {
-    const btn = document.getElementById('play-btn');
-    const audio = document.getElementById('music-player');
-    
-    if (!btn || !audio) return;
-    
-    btn.addEventListener('click', function() {
-      if (audio.paused) {
-        audio.play().catch(function() {});
-      } else {
-        audio.pause();
-      }
-    });
-  }
-
   function init() {
     initIntro();
     initObserver();
     initMissButton();
-    initClock();
-    initFloatingPlayer();
+    initClocks();
     initFooter();
-    initPlayButton();
   }
 
   if (document.readyState === 'loading') {
