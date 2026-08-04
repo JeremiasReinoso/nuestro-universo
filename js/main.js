@@ -27,15 +27,6 @@
 
   const msgHistoryKey = 'missMessagesHistory';
 
-  function loadMessages() {
-    const container = document.getElementById('messages');
-    if (!container) return;
-
-    container.innerHTML = messages.map(function(msg) {
-      return '<div class="message-card"><p class="message-text">' + escapeHtml(msg) + '</p></div>';
-    }).join('');
-  }
-
   function loadDreams() {
     const container = document.getElementById('dreams');
     if (!container) return;
@@ -64,7 +55,6 @@
         if (firstScene) {
           firstScene.classList.add('visible');
           currentScene = 1;
-          loadMessages();
           loadDreams();
         }
       }, 100);

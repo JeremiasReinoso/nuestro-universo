@@ -523,3 +523,78 @@ body {
   color: var(--pink);
   font-style: italic;
 }
+
+/* ── MURAL DE PENSAMIENTOS ── */
+.mural {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+.thought-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  padding: 24px 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  backdrop-filter: blur(12px);
+  max-width: 320px;
+  min-width: 260px;
+}
+
+.scene:nth-child(2) .thought-card {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.scene.visible .thought-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.thought-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  transition: all 0.25s ease;
+}
+
+.thought-card:hover {
+  border-color: var(--pink);
+  box-shadow: 0 8px 25px rgba(255, 79, 163, 0.2);
+}
+
+.thought-text {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  color: var(--white);
+  line-height: 1.5;
+  text-align: center;
+}
+
+#mural .thought-card:nth-child(1) { transition-delay: 0.1s; }
+#mural .thought-card:nth-child(2) { transition-delay: 0.15s; }
+#mural .thought-card:nth-child(3) { transition-delay: 0.2s; }
+#mural .thought-card:nth-child(4) { transition-delay: 0.25s; }
+#mural .thought-card:nth-child(5) { transition-delay: 0.3s; }
+#mural .thought-card:nth-child(6) { transition-delay: 0.35s; }
+#mural .thought-card:nth-child(7) { transition-delay: 0.4s; }
+#mural .thought-card:nth-child(8) { transition-delay: 0.45s; }
+#mural .thought-card:nth-child(9) { transition-delay: 0.5s; }
+#mural .thought-card:nth-child(10) { transition-delay: 0.55s; }
+
+/* ── PARTICULAS DE FONDO ── */
+.mural::before {
+  content: '';
+  position: absolute;
+  inset: -48px;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: radial-gradient(circle, var(--white) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
