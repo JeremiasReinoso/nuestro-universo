@@ -80,79 +80,103 @@
       </div>
 
       <div class="dist-layout">
-        <!-- Tarjeta Argentina -->
-        <div class="dist-card dist-card--left">
-          <div class="dist-card__flag" aria-label="Bandera de Argentina">
-            <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
-              <rect width="60" height="40" fill="#74ACDF"/>
-              <rect y="13.3" width="60" height="13.4" fill="#fff"/>
-              <circle cx="30" cy="20" r="5.5" fill="#F6B40E" stroke="#85340A" stroke-width="0.4"/>
-              <g fill="#85340A" transform="translate(30,20)">
-                <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(0)"/>
-                <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(30)"/>
-                <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(60)"/>
-                <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(90)"/>
-                <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(120)"/>
-                <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(150)"/>
-                <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(180)"/>
-                <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(210)"/>
-                <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(240)"/>
-                <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(270)"/>
-                <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(300)"/>
-                <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(330)"/>
-              </g>
-            </svg>
-          </div>
-          <h3 class="dist-card__country">Argentina</h3>
-          <p class="dist-card__city">El Hoyo, Chubut</p>
-          <div class="dist-card__time" id="time-ar">--:--</div>
-          <div class="dist-card__temp" id="temp-ar">Patagonia</div>
+        <!-- Mundo Argentina -->
+        <div class="dist-world dist-world--argentina">
+          <div class="dist-world__glow"></div>
+          <svg class="dist-world-svg" viewBox="0 0 100 100" aria-hidden="true">
+            <circle class="world-base" cx="50" cy="50" r="35" fill="none" stroke="#00b4ff" stroke-width="2"/>
+            <circle class="world-inner" cx="50" cy="50" r="25" fill="rgba(0,180,255,0.12)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+            <path d="M50 30 L58 48 L88 48 L62 62 L70 90 L50 76 L30 90 L38 62 L12 48 L42 48 Z" fill="rgba(255,255,255,0.1)"/>
+          </svg>
+          <h3 class="dist-world__name">Argentina</h3>
+          <p class="dist-world__city">El Hoyo, Chubut</p>
         </div>
 
-        <!-- Mapa con SVG -->
-        <div class="dist-map-wrap">
-          <div class="dist-svg-map" id="dist-svg-map" aria-hidden="true"></div>
-
-          <!-- Corazón central -->
-          <div class="dist-heart-wrap">
-            <svg class="dist-heart-svg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <defs>
-                <filter id="dist-heart-glow">
-                  <feGaussianBlur stdDeviation="4" result="blur"/>
-                  <feMerge>
-                    <feMergeNode in="blur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
-              <path class="dist-heart-path" d="M50 82 C50 82 8 54 8 28 C8 15 18 7 29 7 C37 7 44 11 50 18 C56 11 63 7 71 7 C82 7 92 15 92 28 C92 54 50 82 50 82 Z"/>
-            </svg>
-            <div class="dist-km-wrapper">
-              <span class="dist-km__label">~7 200 km</span>
-            </div>
+        <!-- Corazón central -->
+        <div class="dist-center">
+          <svg class="dist-heart-svg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <filter id="heart-glow-new">
+                <feGaussianBlur stdDeviation="4" result="blur"/>
+                <feMerge>
+                  <feMergeNode in="blur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            <path class="dist-heart-path" d="M50 82 C50 82 8 54 8 28 C8 15 18 7 29 7 C37 7 44 11 50 18 C56 11 63 7 71 7 C82 7 92 15 92 28 C92 54 50 82 50 82 Z"/>
+          </svg>
+          <div class="dist-km">
+            <span class="dist-km__value">~7 200 km</span>
           </div>
         </div>
 
-        <!-- Tarjeta República Dominicana -->
-        <div class="dist-card dist-card--right">
-          <div class="dist-card__flag" aria-label="Bandera de República Dominicana">
-            <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
-              <rect width="60" height="40" fill="#002D62"/>
-              <rect x="22" width="16" height="40" fill="#fff"/>
-              <rect y="15" width="60" height="10" fill="#fff"/>
-              <rect x="22" y="15" width="16" height="10" fill="#CE1126"/>
-              <rect width="22" height="15" fill="#002D62"/>
-              <rect x="38" width="22" height="15" fill="#CE1126"/>
-              <rect width="22" y="25" height="15" fill="#CE1126"/>
-              <rect x="38" y="25" width="22" height="15" fill="#002D62"/>
-              <circle cx="30" cy="20" r="4" fill="#fff" stroke="#002D62" stroke-width="0.5"/>
-            </svg>
-          </div>
-          <h3 class="dist-card__country">Rep. Dominicana</h3>
-          <p class="dist-card__city" id="dist-city-do">Santo Domingo</p>
-          <div class="dist-card__time" id="time-do">--:--</div>
-          <div class="dist-card__temp" id="temp-do">El Caribe</div>
+        <!-- Línea de conexión -->
+        <div class="dist-connection" id="dist-connection">
+          <svg class="dist-connection-svg" viewBox="0 0 500 400" preserveAspectRatio="none" aria-hidden="true"></svg>
         </div>
+
+        <!-- Mundo Dominicana -->
+        <div class="dist-world dist-world--dominicana">
+          <div class="dist-world__glow"></div>
+          <svg class="dist-world-svg" viewBox="0 0 100 100" aria-hidden="true">
+            <circle class="world-base" cx="50" cy="50" r="35" fill="none" stroke="#8a2be2" stroke-width="2"/>
+            <circle class="world-inner" cx="50" cy="50" r="25" fill="rgba(138,43,226,0.12)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+            <path d="M50 30 L58 48 L88 48 L62 62 L70 90 L50 76 L30 90 L38 62 L12 48 L42 48 Z" fill="rgba(255,255,255,0.1)"/>
+          </svg>
+          <h3 class="dist-world__name">Rep. Dominicana</h3>
+          <p class="dist-world__city">Santo Domingo</p>
+        </div>
+      </div>
+
+      <!-- Tarjeta Argentina -->
+      <div class="dist-card dist-card--left">
+        <div class="dist-card__flag" aria-label="Bandera de Argentina">
+          <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+            <rect width="60" height="40" fill="#74ACDF"/>
+            <rect y="13.3" width="60" height="13.4" fill="#fff"/>
+            <circle cx="30" cy="20" r="5.5" fill="#F6B40E" stroke="#85340A" stroke-width="0.4"/>
+            <g fill="#85340A" transform="translate(30,20)">
+              <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(0)"/>
+              <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(30)"/>
+              <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(60)"/>
+              <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(90)"/>
+              <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(120)"/>
+              <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(150)"/>
+              <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(180)"/>
+              <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(210)"/>
+              <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(240)"/>
+              <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(270)"/>
+              <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(300)"/>
+              <polygon points="0,-5.5 0.6,-3.5 -0.6,-3.5" transform="rotate(330)"/>
+            </g>
+          </svg>
+        </div>
+        <h3 class="dist-card__country">Argentina</h3>
+        <p class="dist-card__city">El Hoyo, Chubut</p>
+        <div class="dist-card__time" id="time-ar">--:--</div>
+        <div class="dist-card__temp" id="temp-ar">Patagonia</div>
+      </div>
+
+      <!-- Tarjeta República Dominicana -->
+      <div class="dist-card dist-card--right">
+        <div class="dist-card__flag" aria-label="Bandera de República Dominicana">
+          <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+            <rect width="60" height="40" fill="#002D62"/>
+            <rect x="22" width="16" height="40" fill="#fff"/>
+            <rect y="15" width="60" height="10" fill="#fff"/>
+            <rect x="22" y="15" width="16" height="10" fill="#CE1126"/>
+            <rect width="22" height="15" fill="#002D62"/>
+            <rect x="38" width="22" height="15" fill="#CE1126"/>
+            <rect width="22" y="25" height="15" fill="#CE1126"/>
+            <rect x="38" y="25" width="22" height="15" fill="#002D62"/>
+            <circle cx="30" cy="20" r="4" fill="#fff" stroke="#002D62" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <h3 class="dist-card__country">Rep. Dominicana</h3>
+        <p class="dist-card__city" id="dist-city-do">Santo Domingo</p>
+        <div class="dist-card__time" id="time-do">--:--</div>
+        <div class="dist-card__temp" id="temp-do">El Caribe</div>
       </div>
 
       <!-- Frase elegante -->

@@ -112,7 +112,7 @@
 
 @keyframes lineDash {
   0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: 20; }
+  100% { stroke-dashoffset: 28; }
 }
 
 @keyframes pulseDot {
@@ -130,6 +130,31 @@
   50% { opacity: 0.9; }
 }
 
+@keyframes pulseTravel {
+  0% { 
+    d: path("M150 310 Q180 180 280 80");
+    opacity: 1;
+    filter: drop-shadow(0 0 6px #ff3c78);
+  }
+  50% { 
+    d: path("M150 310 Q235 160 320 120");
+    opacity: 1;
+    filter: drop-shadow(0 0 6px #00c8ff);
+  }
+  100% { 
+    d: path("M150 310 Q260 80 360 80");
+    opacity: 0;
+  }
+}
+
 .stop-pink { stop-color: var(--pink); }
 .stop-violet { stop-color: var(--neon-violeta); }
 .stop-celeste { stop-color: var(--neon-celeste); }
+
+/* Gradient colors for worlds */
+#arg-gradient {
+  stop-color: #00b4ff;
+}
+#arg-inner {
+  stop-color: rgba(0, 180, 255, 0.6);
+}
