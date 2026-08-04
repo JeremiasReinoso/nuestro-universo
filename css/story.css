@@ -5,8 +5,13 @@
   --border: rgba(255, 255, 255, 0.05);
   --pink: #ff3c78;
   --neon-pink: #ff1744;
+  --cream: #fdfaf6;
+  --cream-dark: #f5f0e6;
   --white: #ffffff;
   --white-60: rgba(255, 255, 255, 0.6);
+  --seal-red: #8b2424;
+  --seal-purple: #8b4513;
+  --seal-violet: #7b2cbf;
   --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-title: 'Playfair Display', 'Georgia', serif;
   --font-hand: 'Dancing Script', cursive;
@@ -129,14 +134,13 @@ body {
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.chapter.visible, .chapter:first-child {
+.chapter.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.chapter:first-child {
-  opacity: 1;
-  transform: translateY(0);
+.chapter:nth-child(1) {
+  background: var(--bg);
 }
 
 .chapter:nth-child(2n) {
@@ -160,325 +164,219 @@ body {
   animation: fadeInUp 0.8s ease 0.3s forwards;
 }
 
-/* ── CHAPTER 2 & 4: Cartas ── */
-.letter, .letter-alt {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s ease 0.3s forwards;
-}
-
-.greeting {
-  font-family: var(--font-title);
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  color: var(--pink);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 40px;
-}
-
-.greeting {
-  font-size: clamp(1.5rem, 3.5vw, 2rem);
-}
-
-.letter-body {
+.welcome-subtitle {
   font-family: var(--font-main);
-  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   color: var(--white-60);
-  line-height: 1.8;
   text-align: center;
-  max-width: 500px;
-  margin: 0 auto 40px;
-  letter-spacing: -0.01em;
-}
-
-.closing {
-  font-family: var(--font-title);
-  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-  color: var(--white);
-  letter-spacing: 0.05em;
-  text-align: center;
+  margin-top: 16px;
   opacity: 0;
   animation: fadeInUp 0.8s ease 0.5s forwards;
 }
 
-.signature {
-  font-family: var(--font-hand);
-  font-size: clamp(1.3rem, 2.5vw, 1.5rem);
-  color: var(--pink);
-  text-align: center;
-  margin-top: 40px;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease 0.7s forwards;
+/* ── LETTER CONTAINER ── */
+.letter-container {
+  perspective: 1000px;
+  perspective-origin: center center;
 }
 
-/* ── CHAPTER 3 & 6: Fotos ── */
-.photo-frame {
+/* ── ENVELOPE ── */
+.envelope {
   position: relative;
-  width: 100%;
-  max-width: 500px;
-  aspect-ratio: 3/4;
-  margin: 0 auto;
+  width: 320px;
+  height: 420px;
+  transform-style: preserve-3d;
+  transform: rotateX(0deg);
+  transition: transform 1s cubic-bezier(0.25, 0, 0.25, 1);
   opacity: 0;
-  transform: translateY(20px);
   animation: fadeInUp 0.8s ease 0.3s forwards;
 }
 
-.photo {
+.envelope.open {
+  transform: rotateX(-20deg);
+}
+
+.envelope-svg {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 20px;
-  filter: brightness(0.9) contrast(1.05);
 }
 
-.photo-caption {
+.envelope-flap {
+  fill: url(#flapGradient);
+  transition: all 0.5s ease;
+}
+
+.envelope-back {
+  fill: #fdfaf6;
+  stroke: #e8e2d4;
+  stroke-width: 0.5;
+  transition: all 0.5s ease;
+}
+
+.envelope-seam {
+  opacity: 0.8;
+}
+
+/* ── SEAL ── */
+.seal-container {
+  cursor: pointer;
+}
+
+.seal-container:hover .seal {
+  filter: drop-shadow(0 0 4px var(--pink));
+}
+
+.seal {
+  fill: url(#sealGradient);
+  stroke: #1a0a0a;
+  stroke-width: 1;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.seal.cracked {
+  filter: url(#crackFilter);
+}
+
+.seal-initials {
+  pointer-events: none;
+}
+
+/* ── ENVELOPE OVERLAY & LETTER ── */
+.envelope-overlay {
   position: absolute;
-  bottom: 24px;
+  top: 120px;
   left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  max-width: 400px;
+  transform: translateX(-50%) scale(0);
+  transition: transform 0.5s cubic-bezier(0.25, 0, 0.25, 1);
+  transform-origin: center top;
+  background: var(--cream);
+  border: 1px solid rgba(232, 226, 212, 0.5);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
 }
 
-.caption-quote {
-  font-family: var(--font-title);
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  color: var(--white);
-  line-height: 1.4;
-  margin-bottom: 12px;
+.envelope.open .envelope-overlay {
+  transform: translateX(-50%) scale(1);
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.photo-quote {
-  font-family: var(--font-main);
-  font-size: clamp(0.8rem, 1.8vw, 0.95rem);
-  color: var(--white-60);
-  line-height: 1.5;
-}
-
-/* ── CHAPTER 5: Canción ── */
-.song {
-  text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s ease 0.3s forwards;
-}
-
-.music-note {
-  width: 40px;
-  height: 40px;
-  margin: 0 auto 24px;
-  color: var(--pink);
-  filter: drop-shadow(0 0 8px var(--pink));
-}
-
-.song-quote {
-  font-family: var(--font-title);
-  font-size: clamp(1rem, 2.2vw, 1.2rem);
-  color: var(--white);
-  text-align: center;
-  margin-bottom: 20px;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease 0.5s forwards;
-}
-
-.song-title {
-  font-family: var(--font-title);
-  font-size: clamp(1.3rem, 3vw, 1.6rem);
-  font-weight: 400;
-  color: var(--white);
-  margin-bottom: 8px;
-}
-
-.song-artist {
-  font-family: var(--font-main);
-  font-size: clamp(0.9rem, 2vw, 1rem);
-  color: var(--white-60);
-}
-
-.play-btn {
-  margin-top: 24px;
-  padding: 16px 32px;
-  background: transparent;
-  border: 1.5px solid var(--pink);
-  color: var(--pink);
-  font-family: var(--font-main);
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  border-radius: 24px;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease 0.7s forwards;
-}
-
-.play-btn:hover {
-  background: var(--pink);
-  color: var(--bg);
-}
-
-/* ── CHAPTER 7: Pequeñas cosas ── */
-.small-things {
-  text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s ease 0.3s forwards;
-}
-
-.section-title {
-  font-family: var(--font-title);
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-weight: 400;
-  color: var(--white);
-  margin-bottom: 60px;
-  letter-spacing: -0.02em;
-}
-
-.items-container {
+.letter {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  padding: 32px 24px;
+  background: var(--cream);
+  border: 1px solid rgba(232, 226, 212, 0.5);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.item {
-  font-family: var(--font-main);
-  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-  color: var(--white-60);
-  line-height: 1.6;
-  text-align: center;
-  max-width: 500px;
-  margin: 0 auto;
+  justify-content: space-between;
   opacity: 0;
   transform: translateY(20px);
+  animation: fadeInUp 0.6s ease 0.5s forwards;
 }
 
-/* ── CHAPTER 8: Sueños ── */
-.dreams {
+.letter.open {
+  transform: translateY(0);
+}
+
+/* ── LETTER CONTENT ── */
+.letter-header {
   text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s ease 0.3s forwards;
-}
-
-.dreams-container {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.dream-item {
-  font-family: var(--font-main);
-  font-size: clamp(1rem, 2.2vw, 1.15rem);
-  color: var(--white-60);
-  line-height: 1.5;
-  text-align: center;
-  max-width: 500px;
-  margin: 0 auto;
-  opacity: 0;
-  animation: fadeInUp 0.6s ease 0.3s forwards;
-}
-
-/* ── CHAPTER 9: Mensaje de extrañeza ── */
-.miss-container {
-  text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s ease 0.3s forwards;
-}
-
-.btn-miss {
-  margin-top: 24px;
-  padding: 14px 28px;
-  background: transparent;
-  border: 1.5px solid var(--pink);
-  color: var(--pink);
-  font-family: var(--font-main);
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  border-radius: 24px;
-  cursor: pointer;
-  transition: all 0.4s ease;
-}
-
-.btn-miss:hover {
-  background: var(--pink);
-  color: var(--bg);
-}
-
-.miss-card {
-  margin-top: 32px;
-  padding: 24px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  max-width: 500px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.miss-text {
-  font-family: var(--font-main);
-  font-size: clamp(0.95rem, 2.2vw, 1rem);
-  color: var(--white);
-  line-height: 1.7;
-}
-
-/* ── CHAPTER 10: Final ── */
-.final {
-  text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s ease 0.3s forwards;
-}
-
-.final-heart {
-  width: 80px;
-  height: 72px;
-  margin: 0 auto 32px;
-  filter: drop-shadow(0 0 12px var(--neon-pink));
-  animation: heartbeatFinal 4s ease-in-out infinite;
-}
-
-.final-heart-path {
-  fill: none;
-  stroke: var(--neon-pink);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-@keyframes heartbeatFinal {
-  0%, 100% { transform: scale(1); }
-  20% { transform: scale(1.15); }
-  40% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-.final-quote {
-  font-family: var(--font-title);
-  font-size: clamp(1.4rem, 3.5vw, 1.8rem);
-  color: var(--white);
-  text-align: center;
-  line-height: 1.4;
   margin-bottom: 24px;
 }
 
-.final-page {
+.letter-day {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+}
+
+.letter-date {
   font-family: var(--font-main);
-  font-size: clamp(0.9rem, 2vw, 1rem);
-  color: var(--white-60);
+  font-size: 0.85rem;
+  color: #888;
+  font-style: italic;
+}
+
+.letter-body {
+  flex: 1;
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.7;
+  text-align: justify;
+  padding: 0 8px;
+}
+
+.letter-body p {
+  margin: 0 0 16px 0;
+}
+
+.letter-spacer {
+  margin: 16px 0;
+}
+
+.letter-footer {
   text-align: center;
-  letter-spacing: 0.15em;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(232, 226, 212, 0.5);
+}
+
+.letter-closing {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  color: #444;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+
+.letter-signature {
+  font-family: var(--font-hand);
+  font-size: 1.4rem;
+  color: var(--seal-red);
+  font-style: italic;
+}
+
+/* ── SAVE BUTTON ── */
+.save-btn {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--pink);
+  color: var(--pink);
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 0.4s ease 0.3s forwards;
+}
+
+.save-btn:hover {
+  background: var(--pink);
+  color: var(--bg);
+}
+
+.save-btn .heart-icon {
+  width: 16px;
+  height: 14px;
+  fill: currentColor;
 }
 
 /* ── FLOTTING PLAYER ── */
@@ -517,47 +415,49 @@ body {
   }
 }
 
-/* ── TYPEWRITER EFFECT ── */
-.typewriter {
-  overflow: hidden;
-  border-right: 2px solid var(--pink);
-  white-space: nowrap;
-  margin: 0 auto;
-  animation: typing 3s steps(40, end), blink 0.8s step-end infinite;
+@keyframes envelopeFlap {
+  0% { transform: rotateX(0deg); }
+  100% { transform: rotateX(-20deg); }
 }
 
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+@keyframes sealBreak {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(5deg); }
+  100% { transform: scale(1.1) rotate(-3deg); }
 }
 
-@keyframes blink {
-  from, to { border-color: transparent; }
-  50% { border-color: var(--pink); }
+/* ── CRACK FILTER ── */
+#crackFilter {
+  feTurbulence {
+    baseFrequency: 0.01
+    numOctaves: 3
+  }
 }
 
-/* ── SCROLL HINT ── */
-.scroll-hint {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease 1s forwards;
-}
-
-.scroll-hint span {
-  width: 2px;
-  height: 24px;
-  background: linear-gradient(to bottom, var(--pink), transparent);
-  animation: scrollLine 2s ease-in-out infinite;
-}
-
-@keyframes scrollLine {
-  0%, 100% { transform: scaleY(0); transform-origin: top; opacity: 1; }
-  50% { transform: scaleY(1); transform-origin: top; opacity: 0.5; }
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .envelope {
+    width: 280px;
+    height: 380px;
+  }
+  
+  .envelope-svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .envelope-flap {
+    d: path;
+  }
+  
+  .letter {
+    width: 240px;
+    height: 240px;
+    padding: 24px 16px;
+  }
+  
+  .letter-body {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
 }

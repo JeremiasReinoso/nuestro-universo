@@ -2,167 +2,130 @@
   'use strict';
 
   let currentChapter = 1;
-  let content = {};
-  let messageIndex = 0;
+  let messages = [];
   let messageHistory = JSON.parse(localStorage.getItem('missHistory') || '[]');
+  let audioContext = null;
 
-  async function loadContent() {
-    try {
-      const response = await fetch('data/content.json');
-      content = await response.json();
-    } catch (e) {
-      console.error('Error loading content:', e);
+  const letterContents = {
+    letter1: {
+      greeting: "Querida,",
+      body: "Cada latido me recuerda a vos. No es solo una sensación, es una conexión que trasciende la distancia. Esta página no es una simple web, es un espacio hecho con las manos, con el corazón, pensando en vos cada vez que la abro.\n\nTodo lo que compartimos tiene un sabor único. Ese café en la esquina de San Martín, la forma en que nos miraste mientras probaba el espresso. Me dijiste que el amor es como el café: necesita tiempo, paciencia y un toque correcto para ser perfecto.\n\nAún me imagino ese sabor, esa calidez en cada sorbo. Cada detalle de vos me recuerda por qué valgo la pena."
+    },
+    letter2: {
+      greeting: "Amor,",
+      body: "Si pudieras ver las fotos que te guardé de nuestro viaje a la costa. El atardecer en Mar del Plata que nos quedamos mirando hasta que el sol se escondía por completo. El silencio que no necesitaba palabras fue el mejor regalo.\n\nEse día supe que algo grande nos estaba creciendo entre nosotros. No fue un momento de palabras grandiosas, sino de miradas y comprensión."
+    },
+    letter3: {
+      greeting: "Querida,",
+      body: "Me gusta cuando me escribís apenas te despertás. El primer mensaje del día es siempre mi parte favorita. Me gusta escuchar tu voz de madrugada, esa voz que dice 'hola' sin necesidad de más palabras.\n\nMe gusta imaginar el día que podamos abrazarnos por primera vez. Cada día que pasa, el deseo de un abrazo físico crece, pero también la certeza de que estamos construyendo algo especial."
     }
+  };
+
+  function loadContent() {
+    return Promise.resolve();
   }
 
   function showChapter(chapter) {
     document.querySelectorAll('.chapter').forEach(c => c.classList.remove('visible'));
-    document.getElementById(`chapter${chapter}`).classList.add('visible');
+    const target = document.getElementById(`chapter${chapter}`);
+    if (target) {
+      target.classList.add('visible');
+    }
     currentChapter = chapter;
-    animateChapter(chapter);
+    if (chapter >= 2) {
+      initEnvelopes();
+    }
   }
 
-  function animateChapter(chapter) {
-    const elements = {
-      1: ['.welcome-title'],
-      2: ['.letter-body', '.closing', '.signature'],
-      3: ['.photo-frame'],
-      4: ['.letter-alt-text'],
-      5: ['.music-note', '.song-quote', '.song-title', '.song-artist', '.play-btn'],
-      6: ['.photo-frame'],
-      7: ['.section-title', '.item'],
-      8: ['.section-title', '.dream-item'],
-      9: ['.section-title', '.btn-miss', '.miss-card'],
-      10: ['.final-heart', '.final-quote', '.final-page']
-    };
-
-    const els = elements[chapter] || [];
-    els.forEach((sel, i) => {
-      const el = document.querySelector(sel);
-      if (el) {
-        setTimeout(() => {
-          el.style.opacity = '0';
-          el.style.transform = 'translateY(20px)';
-          setTimeout(() => {
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            el.style.opacity = '1';
-            el.style.transform = 'translateY(0)';
-          }, 50);
-        }, i * 100);
+  function initEnvelopes() {
+    const envelopes = document.querySelectorAll('.envelope');
+    envelopes.forEach(envelope => {
+      const seal = envelope.querySelector('.seal');
+      const overlay = envelope.querySelector('.envelope-overlay');
+      
+      if (seal && overlay) {
+        seal.addEventListener('click', function(e) {
+          e.stopPropagation();
+          breakSeal(seal);
+        });
+        
+        envelope.addEventListener('click', function() {
+          if (envelope.classList.contains('open')) {
+            closeEnvelope(envelope);
+          } else {
+            openEnvelope(envelope);
+          }
+        });
+        
+        overlay.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
       }
     });
   }
 
-  function typeWriter(text, container, speed = 30) {
-    return new Promise(resolve => {
-      container.innerHTML = '';
-      let i = 0;
-      function type() {
-        if (i < text.length) {
-          container.innerHTML += text.charAt(i);
-          i++;
-          setTimeout(type, text[i] === '\n' ? 10 : speed);
-        } else {
-          resolve();
-        }
-      }
-      type();
-    });
-  }
-
-  async function renderChapter2() {
-    const letterBody = document.querySelector('.letter-body');
-    if (letterBody && content?.letter1?.body) {
-      await typeWriter(content.letter1.body, letterBody);
-    }
-  }
-
-  function renderPhotos() {
-    if (content?.photos) {
-      const photo1 = document.getElementById('photo1');
-      const caption1 = document.getElementById('caption1');
-      const quote1 = document.getElementById('quote1');
-      
-      if (photo1 && content.photos[0]) {
-        photo1.src = content.photos[0].src;
-      }
-      if (caption1 && quote1 && content.photos[0]) {
-        caption1.textContent = content.photos[0].caption;
-        quote1.textContent = content.photos[0].quote;
-      }
-    }
-
-    if (content?.photos?.[1]) {
-      const photo2 = document.getElementById('photo2');
-      const caption2 = document.getElementById('caption2');
-      const quote2 = document.getElementById('quote2');
-      
-      if (photo2) photo2.src = content.photos[1].src;
-      if (caption2 && quote2) {
-        caption2.textContent = content.photos[1].caption;
-        quote2.textContent = content.photos[1].quote;
-      }
-    }
-  }
-
-  async function renderChapter4() {
-    const letterText = document.querySelector('.letter-alt-text');
-    if (letterText && content?.letters?.[0]?.content) {
-      await typeWriter(content.letters[0].content, letterText, 25);
-    }
-  }
-
-  function renderSong() {
-    if (content?.song) {
-      document.querySelector('.song-title').textContent = content.song.title;
-      document.querySelector('.song-artist').textContent = content.song.artist;
-      document.getElementById('music-player').src = content.song.url;
-    }
-  }
-
-  function renderSmallThings() {
-    if (!content?.small_things) return;
-    const container = document.querySelector('.items-container');
-    container.innerHTML = '';
+  function breakSeal(seal) {
+    seal.style.transform = 'scale(1.2) rotate(5deg)';
+    seal.style.filter = 'drop-shadow(0 0 8px #ff3c78)';
+    seal.classList.add('cracked');
     
-    content.small_things.forEach((item, i) => {
-      const p = document.createElement('p');
-      p.className = 'item';
-      p.textContent = item;
-      p.style.opacity = '0';
-      p.style.transform = 'translateY(20px)';
-      container.appendChild(p);
-      
-      setTimeout(() => {
-        p.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        p.style.opacity = '1';
-        p.style.transform = 'translateY(0)';
-      }, i * 120);
-    });
-  }
-
-  function renderDreams() {
-    if (!content?.dreams) return;
-    const container = document.querySelector('.dreams-container');
-    container.innerHTML = '';
+    if (audioContext) {
+      playSound();
+    }
     
-    content.dreams.forEach((dream, i) => {
-      const p = document.createElement('p');
-      p.className = 'dream-item';
-      p.textContent = dream;
-      p.style.opacity = '0';
-      p.style.transform = 'translateY(20px)';
-      container.appendChild(p);
-      
-      setTimeout(() => {
-        p.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        p.style.opacity = '1';
-        p.style.transform = 'translateY(0)';
-      }, i * 120);
-    });
+    setTimeout(() => {
+      seal.style.transform = 'scale(1.1) rotate(-3deg)';
+    }, 200);
   }
 
-  async function setupScrollNav() {
+  function openEnvelope(envelope) {
+    envelope.classList.add('open');
+    
+    setTimeout(() => {
+      const letter = envelope.querySelector('.letter');
+      if (letter) {
+        letter.classList.add('open');
+      }
+      
+      const saveBtn = envelope.querySelector('.save-btn');
+      if (saveBtn) {
+        saveBtn.style.opacity = '1';
+      }
+    }, 600);
+  }
+
+  function closeEnvelope(envelope) {
+    const letter = envelope.querySelector('.letter');
+    if (letter) {
+      letter.classList.remove('open');
+    }
+    envelope.classList.remove('open');
+    
+    const saveBtn = envelope.querySelector('.save-btn');
+    if (saveBtn) {
+      saveBtn.style.opacity = '0';
+    }
+  }
+
+  function getLetterContent(letterKey) {
+    const content = letterContents[letterKey] || { greeting: '', body: '' };
+    return content;
+  }
+
+  function applyContentToLetter(envelope, letterKey) {
+    const content = getLetterContent(letterKey);
+    const letter = envelope.querySelector('.letter');
+    
+    if (letter) {
+      const greetingEl = letter.querySelector('.letter-body p:first-child');
+      const bodyEl = letter.querySelector('.letter-body p:first-child + p');
+      
+      if (greetingEl) greetingEl.textContent = content.greeting;
+      if (bodyEl) bodyEl.textContent = content.body;
+    }
+  }
+
+  function setupScrollNav() {
     let ticking = false;
     
     function onScroll() {
@@ -174,16 +137,21 @@
             if (rect.top < 100 && rect.bottom > 100) {
               if (currentChapter !== i + 1) {
                 showChapter(i + 1);
-                if (i + 1 === 2) renderChapter2();
-                if (i + 1 === 3 || i + 1 === 6) renderPhotos();
-                if (i + 1 === 4) renderChapter4();
-                if (i + 1 === 5) renderSong();
-                if (i + 1 === 7) renderSmallThings();
-                if (i + 1 === 8) renderDreams();
-                if (i + 1 === 9) renderMiss();
               }
             }
           });
+          
+          setTimeout(() => {
+            const envelope2 = document.getElementById('envelope2');
+            if (currentChapter === 2 && envelope2) {
+              applyContentToLetter(envelope2, 'letter2');
+            }
+            const envelope3 = document.getElementById('envelope3');
+            if (currentChapter === 3 && envelope3) {
+              applyContentToLetter(envelope3, 'letter3');
+            }
+          }, 300);
+          
           ticking = false;
         });
         ticking = true;
@@ -193,52 +161,15 @@
     window.addEventListener('scroll', onScroll);
   }
 
-  function renderMiss() {
-    const btn = document.getElementById('btn-miss');
-    const card = document.getElementById('miss-card');
-    const text = document.getElementById('miss-text');
-    
-    btn.addEventListener('click', () => {
-      card.classList.remove('hidden');
-      
-      let availableMessages = content.messages.filter((_, i) => !messageHistory.includes(i));
-      
-      if (availableMessages.length === 0) {
-        messageHistory = [];
-        localStorage.setItem('missHistory', JSON.stringify(messageHistory));
-        availableMessages = content.messages;
-      }
-      
-      const randomIndex = Math.floor(Math.random() * availableMessages.length);
-      const message = availableMessages[randomIndex];
-      
-      messageHistory.push(content.messages.indexOf(message));
-      localStorage.setItem('missHistory', JSON.stringify(messageHistory));
-      
-      text.textContent = message;
-    });
-  }
-
   function setupPlayer() {
     const player = document.getElementById('floating-player');
     const playBtn = document.getElementById('play-btn');
-    const audio = document.getElementById('music-player');
     
-    playBtn.addEventListener('click', () => {
-      if (audio.src && audio.src.includes('example.com')) return;
-      audio.play().catch(e => console.log('Playback prevented:', e));
-    });
-
-    audio.addEventListener('timeupdate', () => {
-      if (!audio.src || audio.src.includes('example.com')) return;
-      const current = Math.floor(audio.currentTime);
-      const duration = Math.floor(audio.duration) || 0;
-      const mins = Math.floor(current / 60).toString().padStart(2, '0');
-      const secs = (current % 60).toString().padStart(2, '0');
-      const durMins = Math.floor(duration / 60).toString().padStart(2, '0');
-      const durSecs = (duration % 60).toString().padStart(2, '0');
-      document.getElementById('player-time').textContent = `${mins}:${secs} / ${durMins}:${durSecs}`;
-    });
+    if (player) {
+      player.style.opacity = '0';
+      player.style.transform = 'translateY(20px)';
+      player.style.animation = 'fadeInUp 0.6s ease 0.5s forwards';
+    }
   }
 
   function hideIntro() {
@@ -250,18 +181,41 @@
     hideIntro();
     loadContent().then(() => {
       showChapter(1);
-      renderChapter2();
-      renderPhotos();
-      renderSong();
-      renderSmallThings();
-      renderDreams();
-      renderMiss();
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 300);
-      setTimeout(setupScrollNav, 600);
+      setTimeout(setupScrollNav, 300);
       setTimeout(setupPlayer, 1000);
     });
+  }
+
+  function createSoundBuffer() {
+    if (!audioContext) {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+  }
+
+  function playSound() {
+    if (!audioContext) {
+      createSoundBuffer();
+      if (!audioContext) return;
+    }
+    
+    try {
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+      
+      oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.3);
+      
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.3);
+    } catch (e) {
+      console.log('Audio not available');
+    }
   }
 
   document.getElementById('enter-btn').addEventListener('click', handleEnter);
@@ -271,10 +225,21 @@
   });
 
   document.addEventListener('DOMContentLoaded', () => {
+    hideIntro();
     loadContent().then(() => {
-      renderSmallThings();
-      renderDreams();
-      renderMiss();
+      applyContentToLetter(document.getElementById('envelope1'), 'letter1');
+      
+      const saveBtn1 = document.getElementById('envelope1')?.querySelector('.save-btn');
+      if (saveBtn1) {
+        saveBtn1.innerHTML = '<svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 19.04 2 15.76 2 11.5 2 7.42 5.15 4 9 4c3.66 0 6.6 4.01 6.6 9.5 0 3.66-2.96 7.02-6.6 7.82v.02c0 .48.16.93.39 1.34l-.48 1.18h12.2l-.48-1.18C19.04 20.93 19 21.35 19 21.35z"/></svg>Guardar la carta ❤️';
+        saveBtn1.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const envelope = this.closest('.envelope');
+          if (envelope) {
+            closeEnvelope(envelope);
+          }
+        });
+      }
     });
   });
 })();
