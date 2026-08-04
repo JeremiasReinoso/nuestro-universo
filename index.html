@@ -20,168 +20,98 @@
   </div>
 
   <div class="chapters">
-    <div class="chapter" id="chapter1">
-      <h1 class="welcome-title">Bienvenido</h1>
-      <p class="welcome-subtitle">Haz scroll para comenzar</p>
-    </div>
+    <section class="chapter" id="chapter1">
+      <h1 class="chapter-title">Bienvenido</h1>
+      <p class="chapter-subtitle">Haz scroll para comenzar</p>
+    </section>
 
-    <div class="chapter" id="chapter2">
-      <div class="letter-container">
+    <section class="chapter" id="chapter2">
+      <div class="envelope-wrapper">
         <div class="envelope" id="envelope1">
-          <svg class="envelope-svg" viewBox="0 0 200 280" aria-hidden="true">
-            <defs>
-              <linearGradient id="flapGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#fdfaf6"/>
-                <stop offset="100%" stop-color="#f5f0e6"/>
-              </linearGradient>
-              <linearGradient id="sealGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#4a1c1c"/>
-                <stop offset="100%" stop-color="#2d0e0e"/>
-              </linearGradient>
-              <filter id="sealGlow">
-                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
-            <path class="envelope-flap" d="M20 40 L100 20 L180 40 L180 260 L20 260 Z"/>
-            <rect class="envelope-back" x="20" y="120" width="160" height="140" rx="2" fill="#fdfaf6" stroke="#e8e2d4" stroke-width="0.5"/>
-            <path class="envelope-seam" d="M20 120 L180 120" stroke="#e8e2d4" stroke-width="0.5"/>
-            <g class="seal-container" id="seal1">
-              <circle class="seal" cx="100" cy="80" r="20" fill="url(#sealGradient)" stroke="#1a0a0a" stroke-width="1"/>
-              <text class="seal-initials" x="100" y="85" text-anchor="middle" font-family="Playfair Display, serif" font-size="10" fill="white" font-weight="500">J</text>
-            </g>
-          </svg>
-          <div class="envelope-overlay" data-letter="letter1">
-            <div class="letter inside-envelope">
-              <div class="letter-header">
-                <span class="letter-day">Miércoles</span>
-                <span class="letter-date">15 de enero de 2024</span>
-              </div>
-              <div class="letter-body">
-                <p>Querida,</p>
-                <p class="letter-spacer"></p>
-                <p>Cada latido me recuerda a vos. No es solo una sensación, es una conexión que trasciende la distancia. Esta página no es una simple web, es un espacio hecho con las manos, con el corazón, pensando en vos cada vez que la abro.</p>
-                <p class="letter-spacer"></p>
-                <p>Todo lo que compartimos tiene un sabor único. Ese café en la esquina de San Martín, la forma en que nos mirasteis mientras probaba el espresso. Me dijiste que el amor es como el café: necesita tiempo, paciencia y un toque correcto para ser perfecto.</p>
-                <p class="letter-spacer"></p>
-                <p>Aún me imagino ese sabor, esa calidez en cada sorbo. Cada detalle de vos me recuerda por qué valgo la pena.</p>
-              </div>
-              <div class="letter-footer">
-                <div class="letter-closing">Con todo mi amor</div>
-                <div class="letter-signature">Jeremías</div>
-              </div>
+          <div class="envelope-flap"></div>
+          <div class="envelope-seal">
+            <span class="seal-initials">J</span>
+          </div>
+          <div class="letter">
+            <div class="letter-header">
+              <span class="letter-day">Miércoles</span>
+              <span class="letter-date">15 de enero de 2024</span>
+            </div>
+            <div class="letter-body">
+              <p>Querida,</p>
+              <p>Cada latido me recuerda a vos. No es solo una sensación, es una conexión que trasciende la distancia. Esta página no es una simple web, es un espacio hecho con las manos, con el corazón, pensando en vos cada vez que la abro.</p>
+              <p>Todo lo que compartimos tiene un sabor único. Ese café en la esquina de San Martín, la forma en que nos miraste mientras probaba el espresso. Me dijiste que el amor es como el café: necesita tiempo, paciencia y un toque correcto para ser perfecto.</p>
+              <p>Aún me imagino ese sabor, esa calidez en cada sorbo. Cada detalle de vos me recuerda por qué valgo la pena.</p>
+            </div>
+            <div class="letter-footer">
+              <div class="letter-closing">Con todo mi amor</div>
+              <div class="letter-signature">Jeremías</div>
             </div>
           </div>
+          <button class="save-btn" aria-label="Guardar la carta">
+            <span>Guardar la carta</span>
+          </button>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="chapter" id="chapter3">
-      <div class="letter-container">
+    <section class="chapter" id="chapter3">
+      <div class="envelope-wrapper">
         <div class="envelope" id="envelope2">
-          <svg class="envelope-svg" viewBox="0 0 200 280" aria-hidden="true">
-            <defs>
-              <linearGradient id="flapGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#fdfaf6"/>
-                <stop offset="100%" stop-color="#f5f0e6"/>
-              </linearGradient>
-              <linearGradient id="sealGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#8b4513"/>
-                <stop offset="100%" stop-color="#5d2811"/>
-              </linearGradient>
-              <filter id="sealGlow2">
-                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
-            <path class="envelope-flap" d="M20 40 L100 20 L180 40 L180 260 L20 260 Z"/>
-            <rect class="envelope-back" x="20" y="120" width="160" height="140" rx="2" fill="#fdfaf6" stroke="#e8e2d4" stroke-width="0.5"/>
-            <path class="envelope-seam" d="M20 120 L180 120" stroke="#e8e2d4" stroke-width="0.5"/>
-            <g class="seal-container" id="seal2">
-              <circle class="seal" cx="100" cy="80" r="20" fill="url(#sealGradient2)" stroke="#4a2c1a" stroke-width="1"/>
-              <text class="seal-initials" x="100" y="85" text-anchor="middle" font-family="Playfair Display, serif" font-size="10" fill="white" font-weight="500">D</text>
-            </g>
-          </svg>
-          <div class="envelope-overlay" data-letter="letter2">
-            <div class="letter inside-envelope">
-              <div class="letter-header">
-                <span class="letter-day">Viernes</span>
-                <span class="letter-date">22 de marzo de 2024</span>
-              </div>
-              <div class="letter-body">
-                <p>Amor,</p>
-                <p class="letter-spacer"></p>
-                <p>Si pudieras ver las fotos que te guardé de nuestro viaje a la costa. El atardecer en Mar del Plata que nos quedamos mirando hasta que el sol se escondía por completo. El silencio que no necesitaba palabras fue el mejor regalo.</p>
-                <p class="letter-spacer"></p>
-                <p>Ese día supe que algo grande nos estaba creciendo entre nosotros. No fue un momento de palabras grandiosas, sino de miradas y comprensión.</p>
-              </div>
-              <div class="letter-footer">
-                <div class="letter-closing">Con todo mi corazón</div>
-                <div class="letter-signature">Jeremías</div>
-              </div>
+          <div class="envelope-flap"></div>
+          <div class="envelope-seal">
+            <span class="seal-initials">D</span>
+          </div>
+          <div class="letter">
+            <div class="letter-header">
+              <span class="letter-day">Viernes</span>
+              <span class="letter-date">22 de marzo de 2024</span>
+            </div>
+            <div class="letter-body">
+              <p>Amor,</p>
+              <p>Si pudieras ver las fotos que te guardé de nuestro viaje a la costa. El atardecer en Mar del Plata que nos quedamos mirando hasta que el sol se escondía por completo. El silencio que no necesitaba palabras fue el mejor regalo.</p>
+              <p>Ese día supe que algo grande nos estaba creciendo entre nosotros. No fue un momento de palabras grandiosas, sino de miradas y comprensión.</p>
+            </div>
+            <div class="letter-footer">
+              <div class="letter-closing">Con todo mi corazón</div>
+              <div class="letter-signature">Jeremías</div>
             </div>
           </div>
+          <button class="save-btn" aria-label="Guardar la carta">
+            <span>Guardar la carta</span>
+          </button>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="chapter" id="chapter4">
-      <div class="letter-container">
+    <section class="chapter" id="chapter4">
+      <div class="envelope-wrapper">
         <div class="envelope" id="envelope3">
-          <svg class="envelope-svg" viewBox="0 0 200 280" aria-hidden="true">
-            <defs>
-              <linearGradient id="flapGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#fdfaf6"/>
-                <stop offset="100%" stop-color="#f5f0e6"/>
-              </linearGradient>
-              <linearGradient id="sealGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#7b2cbf"/>
-                <stop offset="100%" stop-color="#4d1a8c"/>
-              </linearGradient>
-              <filter id="sealGlow3">
-                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
-            <path class="envelope-flap" d="M20 40 L100 20 L180 40 L180 260 L20 260 Z"/>
-            <rect class="envelope-back" x="20" y="120" width="160" height="140" rx="2" fill="#fdfaf6" stroke="#e8e2d4" stroke-width="0.5"/>
-            <path class="envelope-seam" d="M20 120 L180 120" stroke="#e8e2d4" stroke-width="0.5"/>
-            <g class="seal-container" id="seal3">
-              <circle class="seal" cx="100" cy="80" r="20" fill="url(#sealGradient3)" stroke="#2d1a4d" stroke-width="1"/>
-              <text class="seal-initials" x="100" y="85" text-anchor="middle" font-family="Playfair Display, serif" font-size="10" fill="white" font-weight="500">J</text>
-            </g>
-          </svg>
-          <div class="envelope-overlay" data-letter="letter3">
-            <div class="letter inside-envelope">
-              <div class="letter-header">
-                <span class="letter-day">Domingo</span>
-                <span class="letter-date">18 de febrero de 2024</span>
-              </div>
-              <div class="letter-body">
-                <p>Querida,</p>
-                <p class="letter-spacer"></p>
-                <p>Me gusta cuando me escribís apenas te despertás. El primer mensaje del día es siempre mi parte favorita. Me gusta escuchar tu voz de madrugada, esa voz que dice "hola" sin necesidad de más palabras.</p>
-                <p class="letter-spacer"></p>
-                <p>Me gusta imaginar el día que podamos abrazarnos por primera vez. Cada día que pasa, el deseo de un abrazo físico crece, pero también la certeza de que estamos construyendo algo especial.</p>
-              </div>
-              <div class="letter-footer">
-                <div class="letter-closing">Con todo mi amor</div>
-                <div class="letter-signature">Jeremías</div>
-              </div>
+          <div class="envelope-flap"></div>
+          <div class="envelope-seal">
+            <span class="seal-initials">J</span>
+          </div>
+          <div class="letter">
+            <div class="letter-header">
+              <span class="letter-day">Domingo</span>
+              <span class="letter-date">18 de febrero de 2024</span>
+            </div>
+            <div class="letter-body">
+              <p>Querida,</p>
+              <p>Me gusta cuando me escribís apenas te despertás. El primer mensaje del día es siempre mi parte favorita. Me gusta escuchar tu voz de madrugada, esa voz que dice "hola" sin necesidad de más palabras.</p>
+              <p>Me gusta imaginar el día que podamos abrazarnos por primera vez. Cada día que pasa, el deseo de un abrazo físico crece, pero también la certeza de que estamos construyendo algo especial.</p>
+            </div>
+            <div class="letter-footer">
+              <div class="letter-closing">Con todo mi amor</div>
+              <div class="letter-signature">Jeremías</div>
             </div>
           </div>
+          <button class="save-btn" aria-label="Guardar la carta">
+            <span>Guardar la carta</span>
+          </button>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 
   <div id="floating-player">
