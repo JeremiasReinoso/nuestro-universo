@@ -82,3 +82,47 @@
   .permanent-heart { width: 36px; height: 32px; bottom: 20px; left: 20px; }
   .permanent-heart path { stroke-width: 2; }
 }
+
+
+/* ── DISTANCIA MÓVIL ── */
+@media (max-width: 960px) {
+  .dist-layout {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+  .dist-card--left  { grid-column: 1; grid-row: 2; }
+  .dist-map-wrap    { grid-column: 1 / -1; grid-row: 1; max-width: 400px; }
+  .dist-card--right { grid-column: 2; grid-row: 2; }
+}
+
+@media (max-width: 640px) {
+  .dist-section { padding: 80px 20px 60px; }
+
+  .dist-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 24px;
+  }
+  .dist-map-wrap    { grid-column: 1; grid-row: 1; max-width: 320px; aspect-ratio: 3/4; }
+  .dist-card--left  { grid-column: 1; grid-row: 2; }
+  .dist-card--right { grid-column: 1; grid-row: 3; }
+
+  .dist-heart-svg { width: 56px; height: 50px; }
+  .dist-km__label { font-size: 1.3rem; }
+
+  .dist-quote { padding: 28px 32px; margin-top: 40px; }
+  .dist-quote__text { font-size: 0.95rem; }
+
+  .dist-bar {
+    flex-wrap: wrap;
+    border-radius: 12px;
+  }
+  .dist-bar__item { min-width: 45%; }
+  .dist-bar__sep  { display: none; }
+}
+
+@media (max-width: 480px) {
+  .dist-header { margin-bottom: 40px; }
+  .dist-title  { font-size: 2rem; }
+  .dist-bar__item { min-width: 100%; }
+}

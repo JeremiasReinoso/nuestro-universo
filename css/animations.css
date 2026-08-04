@@ -101,3 +101,35 @@
 
 /* Promesas: delay por índice */
 .promise-item { transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease; }
+
+
+/* ── DISTANCIA ANIMATIONS ── */
+@keyframes lineGlow {
+  0% { stroke-width: 8; opacity: 0.6; }
+  50% { stroke-width: 12; opacity: 0.9; }
+  100% { stroke-width: 8; opacity: 0.6; }
+}
+
+@keyframes lineDash {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 20; }
+}
+
+@keyframes pulseDot {
+  0%, 100% { r: 5; opacity: 1; }
+  50% { r: 7; opacity: 0.7; }
+}
+
+@keyframes destGlow {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.9; }
+}
+
+.stop-pink { stop-color: var(--pink); }
+.stop-violet { stop-color: var(--neon-violeta); }
+.stop-celeste { stop-color: var(--neon-celeste); }
