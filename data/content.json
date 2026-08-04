@@ -1,0 +1,71 @@
+{
+  "letter1": {
+    "greeting": "Querida,",
+    "body": "Cada latido me recuerda a vos. No es solo una sensación, es una conexión que trasciende la distancia. Esta página no es una simple web, es un espacio hecho con las manos, con el corazón, pensando en vos cada vez que la abro.",
+    "closing": "Con todo mi amor",
+    "signature": "[Mi nombre]"
+  },
+  "letters": [
+    {
+      "date": "2024-01-15",
+      "subject": "Recordando nuestro primer café",
+      "content": "¿Te acordás de ese primer café en esquina de San Martín? La forma en que me miraste mientras probaba el espresso. Me dijiste que el amor es como el café: necesita tiempo, paciencia y un toque correcto para ser perfecto. Aún me imagino ese sabor, esa calidez."
+    },
+    {
+      "date": "2024-03-22",
+      "subject": "Viaje a la costa",
+      "content": "Si pudieras ver las fotos que te guardé de nuestro viaje a la costa. El atardecer en Mar del Plata que nos quedamos mirando hasta que el sol se escondía por completo. El silencio que no necesitaba palabras. Ese día supe que algo grande nos estaba creciendo entre nosotros."
+    }
+  ],
+  "photos": [
+    {
+      "id": 1,
+      "src": "assets/photos/ch1.jpg",
+      "caption": "Este es el momento exacto en que supe que eras tú.",
+      "quote": "En ese instante, todo encajó."
+    },
+    {
+      "id": 2,
+      "src": "assets/photos/ch6.jpg",
+      "caption": "Atardecer en el mar.",
+      "quote": "El cielo se pintaba de los colores que solo tú sabes inspirar."
+    }
+  ],
+  "song": {
+    "title": "La Vida es Un Carnaval",
+    "artist": "Celia Cruz",
+    "url": "https://example.com/music.mp3",
+    "quote": "Cada vez que la escucho pienso en vos."
+  },
+  "small_things": [
+    "Me gusta cuando me escribís apenas te despertás.",
+    "Me gusta escuchar tu voz de madrugada.",
+    "Me gusta imaginar el día que podamos abrazarnos por primera vez.",
+    "Me gusta tu risa cuando cantan mal en la ducha.",
+    "Me gusta cuando me preguntás qué me pasó el día.",
+    "Me gusta tu forma de toser cuando estás enfermo.",
+    "Me gusta la manera en que frunces el ceño cuando estás concentrada.",
+    "Me gusta que guardes mis frases favoritas.",
+    "Me gusta cuando me llamás con un simple 'hola'.",
+    "Me gusta tu perfume imaginario."
+  ],
+  "dreams": [
+    "Nuestro primer abrazo físico",
+    "Nuestro primer beso",
+    "Nuestro primer viaje juntos",
+    "Nuestro primer café compartido",
+    "Nuestro primer atardecer juntos",
+    "Decirte 'te amo' por voz por primera vez",
+    "Construir nuestro hombro juntos",
+    "Nuestra primera cena especial",
+    "Visitar el lugar donde nos conocimos",
+    "Escribir una carta hecha a mano"
+  ],
+  "messages": [
+    "Si estas leyendo esto, significa que me extrañaste. Aunque estemos lejos, cada día que paso pienso en lo afortunado que soy de conocerte. Tu sonrisa ilumina mis días más oscuros.",
+    "El tiempo pasa, pero el recuerdo de nuestras conversaciones guardadas se queda. Cada palabra tuya tiene un lugar especial en mi corazón.",
+    "A veces me pregunto cómo sería si hubiéramos cruzado los caminos antes. Pero creo que todo tiene su sentido. Tú llegaste justo cuando necesitaba luz.",
+    "Quiero que sepas que cada mesita que pasa contigo es un regalo. No hay día que no me despierto pensando en algo que hiciste o dijiste.",
+    "Si alguna vez dudas de lo que sentimos, recuerda que el amor verdadero no tiene miedo de la distancia. Él busca formas de estar cerca."
+  ]
+}
