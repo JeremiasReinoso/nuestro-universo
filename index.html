@@ -7,137 +7,105 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="css/variables.css" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/layout.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/story.css" />
 </head>
 <body>
   <div id="intro">
-    <svg class="intro-heart" viewBox="0 0 100 90" aria-hidden="true">
-      <path class="heart-path" d="M50 82 C50 82 8 54 8 28 C8 15 18 7 29 7 C37 7 44 11 50 18 C56 11 63 7 71 7 C82 7 92 15 92 28 C92 54 50 82 50 82 Z"/>
+    <svg class="heart" viewBox="0 0 100 90" aria-hidden="true">
+      <path d="M50 82 C50 82 8 54 8 28 C8 15 18 7 29 7 C37 7 44 11 50 18 C56 11 63 7 71 7 C82 7 92 15 92 28 C92 54 50 82 50 82 Z"/>
     </svg>
     <p class="intro-message">Cada latido me recuerda a vos.</p>
-    <button id="enter-btn" class="enter-btn">Comenzar</button>
+    <button id="enter-btn" class="enter-btn">Comenzar ❤️</button>
   </div>
 
-  <div class="chapters">
-    <section class="chapter" id="chapter1">
-      <h1 class="chapter-title">La mejor parte de nuestra historia</h1>
-      <p class="chapter-subtitle">todavía está por escribirse.</p>
+  <div class="scenes">
+    <section class="scene" id="scene1">
+      <h1 class="title">Para la persona más especial de mi vida</h1>
+      <p class="text">Gracias por aparecer en mi vida. Cada latido me recuerda a vos. Esta página es un espacio hecho con las manos, con el corazón, pensando en vos cada vez que la abro.</p>
     </section>
 
-    <section class="chapter" id="chapter2">
-      <div class="letter">
-        <p class="letter-line greeting greeting--main">Querida,</p>
-        <div class="letter-body" id="letter-body-2">
-          <p class="letter-text">Cada latido me recuerda a vos. No es solo una sensación, es una conexión que trasciende la distancia. Esta página no es una simple web, es un espacio hecho con las manos, con el corazón, pensando en vos cada vez que la abro.</p>
-          <p class="letter-text">Todo lo que compartimos tiene un sabor único. Ese café en la esquina de San Martín, la forma en que nos miraste mientras probaba el espresso. Me dijiste que el amor es como el café: necesita tiempo, paciencia y un toque correcto para ser perfecto.</p>
-          <p class="letter-text">Aún me imagino ese sabor, esa calidez en cada sorbo. Cada detalle de vos me recuerda por qué valgo la pena.</p>
-          <p class="letter-text">Con todo mi amor</p>
-          <p class="letter-text signature">Jeremías</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="chapter" id="chapter3">
-      <div class="photo-frame">
-        <img class="photo" src="assets/photos/ch3.jpg" alt="Foto 1" />
-        <div class="photo-caption">
+    <section class="scene" id="scene2">
+      <div class="photo-container">
+        <img src="assets/photos/photo1.jpg" alt="Foto" class="photo" />
+        <div class="caption">
           <p class="quote">En ese instante, todo encajó.</p>
           <p class="author">Para ti</p>
         </div>
       </div>
     </section>
 
-    <section class="chapter" id="chapter4">
-      <div class="letter">
-        <p class="letter-line greeting greeting--main">Amor,</p>
-        <div class="letter-body" id="letter-body-4">
-          <p class="letter-text">Si pudieras ver las fotos que te guardé de nuestro viaje a la costa. El atardecer en Mar del Plata que nos quedamos mirando hasta que el sol se escondía por completo. El silencio que no necesitaba palabras fue el mejor regalo.</p>
-          <p class="letter-text">Ese día supe que algo grande nos estaba creciendo entre nosotros. No fue un momento de palabras grandiosas, sino de miradas y comprensión.</p>
-          <p class="letter-text">Con todo mi corazón</p>
-          <p class="letter-text signature">Jeremías</p>
+    <section class="scene" id="scene3">
+      <h2 class="section-title">Gracias por aparecer en mi vida</h2>
+      <div class="messages" id="messages">
+        <div class="message-card">
+          <p class="message-text">Gracias por aparecer en mi vida.</p>
         </div>
       </div>
     </section>
 
-    <section class="chapter" id="chapter5">
-      <div class="song">
-        <svg class="song-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 4v17.5c0 .8.4 1.5 1 2.5H9c-1.1 0-2-.9-2-2V12H3V4h9M18 4v4l-3 .5 3 .5V4z"/>
-        </svg>
-        <p class="song-quote">Cada vez que la escucho pienso en vos.</p>
-        <div class="song-info">
-          <p class="song-title">La Vida es Un Carnaval</p>
-          <p class="song-artist">Celia Cruz</p>
+    <section class="scene" id="scene4">
+      <div class="player-container">
+        <div class="player-info">
+          <p class="player-quote">Cada vez que la escucho pienso en vos.</p>
+          <h3 class="player-title">La Vida es Un Carnaval</h3>
+          <p class="player-artist">Celia Cruz</p>
         </div>
         <button id="play-btn" class="play-btn">Reproducir</button>
         <audio id="music-player" preload="metadata"></audio>
       </div>
     </section>
 
-    <section class="chapter" id="chapter6">
-      <div class="photo-frame">
-        <img class="photo" src="assets/photos/ch6.jpg" alt="Foto 2" />
-        <div class="photo-caption">
-          <p class="quote">El cielo se pintaba de los colores que solo tú sabes inspirar.</p>
-          <p class="author">Para ti</p>
+    <section class="scene" id="scene5">
+      <h2 class="section-title">Nuestros sueños</h2>
+      <div class="dreams" id="dreams">
+        <div class="dream-card">
+          <p class="dream-text">Primer abrazo físico</p>
         </div>
       </div>
     </section>
 
-    <section class="chapter" id="chapter7">
-      <div class="small-things">
-        <h2 class="section-title">Las pequeñas cosas</h2>
-        <div class="items" id="items-container">
-          <p class="small-thing">
-            <span class="small-thing-text">Me gusta cuando me escribís apenas te despertás.</span>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="chapter" id="chapter8">
-      <div class="dreams">
-        <h2 class="section-title">Nuestros sueños</h2>
-        <div class="items" id="dreams-container">
-          <p class="dream-item">
-            <span class="dream-item-text">Primer abrazo físico</span>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="chapter" id="chapter9">
+    <section class="scene" id="scene6">
       <div class="miss-container">
         <h2 class="section-title">Cuando me extrañes</h2>
-        <button id="miss-btn" class="miss-btn">Leer mensaje</button>
+        <button id="miss-btn" class="miss-btn">Presioname ❤️</button>
         <div class="miss-card" id="miss-card">
           <p class="miss-text" id="miss-text"></p>
         </div>
       </div>
     </section>
 
-    <section class="chapter" id="chapter10">
-      <div class="final">
-        <p class="final-title">La mejor parte de nuestra historia todavía está por escribirse.</p>
-        <p class="final-page">Página 1 de ∞</p>
+    <section class="scene" id="scene7">
+      <h1 class="final-title">La mejor parte de nuestra historia todavía está por escribirse.</h1>
+      <div class="clock-container">
+        <div class="clock" id="clock">
+          <div class="clock-time">
+            <span id="hours">--</span>
+            <span class="clock-separator">:</span>
+            <span id="minutes">--</span>
+            <span class="clock-separator">:</span>
+            <span id="seconds">--</span>
+          </div>
+          <div class="clock-date" id="date">
+            <span id="day"></span>, <span id="month"></span> <span id="day-num"></span>, <span id="year"></span>
+          </div>
+        </div>
       </div>
+      <p class="clock-quote">Cada segundo que pasa es un segundo menos para volver a encontrarnos.</p>
     </section>
   </div>
+
+  <footer class="footer">
+    <p class="footer-text">Con todo mi amor ❤️</p>
+    <p class="footer-author">Jeremías</p>
+  </footer>
 
   <div id="floating-player">
     <svg class="player-icon" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M12 4v17.5c0 .8.4 1.5 1 2.5H9c-1.1 0-2-.9-2-2V12H3V4h9M18 4v4l-3 .5 3 .5V4z"/>
     </svg>
-    <span class="player-time" id="player-time">--:-- / --:--</span>
+    <span class="player-time" id="player-time">--:--</span>
   </div>
 
-  <script src="js/observer.js"></script>
-  <script src="js/music.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
