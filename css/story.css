@@ -130,8 +130,6 @@ body {
 .scene:nth-child(3) { background: var(--bg); }
 .scene:nth-child(4) { background: var(--bg); }
 .scene:nth-child(5) { background: var(--bg); }
-.scene:nth-child(6) { background: var(--bg); }
-.scene:nth-child(7) { background: var(--bg); }
 
 .title {
   font-family: var(--font-title);
@@ -161,56 +159,6 @@ body {
   transform: translateY(0);
 }
 
-.photo-container {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  aspect-ratio: 3/4;
-}
-
-.photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 16px;
-  filter: brightness(0.9);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.scene.visible .photo {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.caption {
-  text-align: center;
-  margin-top: 24px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s;
-}
-
-.scene.visible .caption {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.quote {
-  font-family: var(--font-title);
-  font-size: clamp(1rem, 2.2vw, 1.2rem);
-  color: var(--pink);
-  font-style: italic;
-  margin-bottom: 12px;
-}
-
-.author {
-  font-family: var(--font-body);
-  font-size: clamp(0.85rem, 1.8vw, 1rem);
-  color: var(--muted);
-}
-
 .section-title {
   font-family: var(--font-title);
   font-size: clamp(1.8rem, 4vw, 2.5rem);
@@ -218,103 +166,6 @@ body {
   text-align: center;
   margin-bottom: 60px;
   letter-spacing: -0.01em;
-}
-
-.messages {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  max-width: 600px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.message-card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  padding: 28px 24px;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-  backdrop-filter: blur(10px);
-}
-
-.scene.visible .message-card {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.message-text {
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 2.2vw, 1.15rem);
-  color: var(--white);
-  line-height: 1.6;
-}
-
-#messages .message-card:nth-child(1) { transition-delay: 0.1s; }
-#messages .message-card:nth-child(2) { transition-delay: 0.2s; }
-#messages .message-card:nth-child(3) { transition-delay: 0.3s; }
-#messages .message-card:nth-child(4) { transition-delay: 0.4s; }
-#messages .message-card:nth-child(5) { transition-delay: 0.5s; }
-#messages .message-card:nth-child(6) { transition-delay: 0.6s; }
-#messages .message-card:nth-child(7) { transition-delay: 0.7s; }
-#messages .message-card:nth-child(8) { transition-delay: 0.8s; }
-#messages .message-card:nth-child(9) { transition-delay: 0.9s; }
-#messages .message-card:nth-child(10) { transition-delay: 1s; }
-
-.dreams {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  max-width: 600px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.dream-card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  padding: 28px 24px;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-  backdrop-filter: blur(10px);
-}
-
-.scene.visible .dream-card {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.dream-text {
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 2.2vw, 1.15rem);
-  color: var(--white);
-  line-height: 1.6;
-}
-
-#dreams .dream-card:nth-child(1) { transition-delay: 0.1s; }
-#dreams .dream-card:nth-child(2) { transition-delay: 0.2s; }
-#dreams .dream-card:nth-child(3) { transition-delay: 0.3s; }
-#dreams .dream-card:nth-child(4) { transition-delay: 0.4s; }
-#dreams .dream-card:nth-child(5) { transition-delay: 0.5s; }
-#dreams .dream-card:nth-child(6) { transition-delay: 0.6s; }
-
-.miss-container {
-  text-align: center;
-  max-width: 500px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.scene.visible .miss-container {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .miss-btn {
@@ -344,7 +195,7 @@ body {
   border: 1px solid var(--glass-border);
   border-radius: 12px;
   text-align: center;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
 }
 
 .miss-text {
@@ -476,12 +327,26 @@ body {
 
 .phrase {
   font-family: var(--font-title);
-  font-size: clamp(1rem, 2.2vw, 1.1rem);
+  font-size: clamp(1.2rem, 2.8vw, 1.4rem);
   color: var(--white);
   text-align: center;
-  line-height: 1.5;
+  line-height: 1.4;
   font-style: italic;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  max-width: 700px;
 }
+
+.scene.visible .phrase {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#phrases .phrase:nth-child(1) { transition-delay: 0.1s; }
+#phrases .phrase:nth-child(2) { transition-delay: 0.2s; }
+#phrases .phrase:nth-child(3) { transition-delay: 0.3s; }
+#phrases .phrase:nth-child(4) { transition-delay: 0.4s; }
 
 .final-title {
   font-family: var(--font-title);
@@ -502,7 +367,6 @@ body {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.7s ease, transform 0.7s ease;
-  pointer-events: none;
 }
 
 .footer-visible {
@@ -522,79 +386,4 @@ body {
   font-size: 1.2rem;
   color: var(--pink);
   font-style: italic;
-}
-
-/* ── MURAL DE PENSAMIENTOS ── */
-.mural {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-  justify-items: center;
-}
-
-.thought-card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 14px;
-  padding: 24px 20px;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-  backdrop-filter: blur(12px);
-  max-width: 320px;
-  min-width: 260px;
-}
-
-.scene:nth-child(2) .thought-card {
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.scene.visible .thought-card {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.thought-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  transition: all 0.25s ease;
-}
-
-.thought-card:hover {
-  border-color: var(--pink);
-  box-shadow: 0 8px 25px rgba(255, 79, 163, 0.2);
-}
-
-.thought-text {
-  font-family: var(--font-body);
-  font-size: clamp(0.9rem, 1.8vw, 1rem);
-  color: var(--white);
-  line-height: 1.5;
-  text-align: center;
-}
-
-#mural .thought-card:nth-child(1) { transition-delay: 0.1s; }
-#mural .thought-card:nth-child(2) { transition-delay: 0.15s; }
-#mural .thought-card:nth-child(3) { transition-delay: 0.2s; }
-#mural .thought-card:nth-child(4) { transition-delay: 0.25s; }
-#mural .thought-card:nth-child(5) { transition-delay: 0.3s; }
-#mural .thought-card:nth-child(6) { transition-delay: 0.35s; }
-#mural .thought-card:nth-child(7) { transition-delay: 0.4s; }
-#mural .thought-card:nth-child(8) { transition-delay: 0.45s; }
-#mural .thought-card:nth-child(9) { transition-delay: 0.5s; }
-#mural .thought-card:nth-child(10) { transition-delay: 0.55s; }
-
-/* ── PARTICULAS DE FONDO ── */
-.mural::before {
-  content: '';
-  position: absolute;
-  inset: -48px;
-  pointer-events: none;
-  opacity: 0.03;
-  background-image: radial-gradient(circle, var(--white) 1px, transparent 1px);
-  background-size: 40px 40px;
 }
