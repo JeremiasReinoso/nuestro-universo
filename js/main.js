@@ -4,43 +4,14 @@
   let currentScene = 0;
 
   const messages = [
-    'Gracias por aparecer en mi vida.',
-    'Aunque nos separen miles de kilómetros, siempre te siento cerca.',
-    'Me haces feliz incluso en los días difíciles.',
-    'Sos el lugar al que siempre quiero volver.',
-    'Cada conversación con vos hace mejor mi día.',
-    'No veo la hora de poder abrazarte.',
-    'Nuestro primer abrazo va a valer toda la espera.',
-    'No importa la distancia, siempre encuentro una razón para sonreír cuando pienso en vos.',
-    'Gracias por existir.',
-    'Te elegiría una y mil veces.'
-  ];
-
-  const dreams = [
-    'Primer abrazo físico',
-    'Primer beso',
-    'Primer viaje juntos',
-    'Primer café compartido',
-    'Primer atardecer juntos',
-    'Decirte "te amo" por voz por primera vez'
+    'Si estas leyendo esto, significa que me extrañaste. Aunque estemos lejos, cada día que paso pienso en lo afortunado que soy de conocerte. Tu sonrisa ilumina mis días más oscuros.',
+    'El tiempo pasa, pero el recuerdo de nuestras conversaciones guardadas se queda. Cada palabra tuya tiene un lugar especial en mi corazón.',
+    'A veces me pregunto cómo sería si hubiéramos cruzado los caminos antes. Pero creo que todo tiene su sentido. Tú llegaste justo cuando necesitaba luz.',
+    'Quiero que sepas que cada mesita que pasa contigo es un regalo. No hay día que no me despierto pensando en algo que hiciste o dijiste.',
+    'Si alguna vez dudas de lo que sentimos, recuerda que el amor verdadero no tiene miedo de la distancia. Él busca formas de estar cerca.'
   ];
 
   const msgHistoryKey = 'missMessagesHistory';
-
-  function loadDreams() {
-    const container = document.getElementById('dreams');
-    if (!container) return;
-
-    container.innerHTML = dreams.map(function(dream) {
-      return '<div class="dream-card"><p class="dream-text">' + escapeHtml(dream) + '</p></div>';
-    }).join('');
-  }
-
-  function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  }
 
   function initIntro() {
     const intro = document.getElementById('intro');
@@ -55,7 +26,6 @@
         if (firstScene) {
           firstScene.classList.add('visible');
           currentScene = 1;
-          loadDreams();
         }
       }, 100);
     }
